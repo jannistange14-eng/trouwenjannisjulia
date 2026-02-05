@@ -1,0 +1,468 @@
+:root {
+    --bg-light: rgb(244, 231, 166);
+    --bg-dark: rgb(97, 15, 12);
+    --bg-blue: rgb(181, 199, 225);
+    --bg-green: rgb(107, 117, 52);
+    --bg-greentrans: rgba(107, 117, 52, 0.644);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Times New Roman", Times, serif;
+    background-color: var(--bg-blue);
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ===== LAYOUT ===== */
+
+.container {
+    width: 100%;
+    max-width: none; /* vul de volledige breedte */
+    margin: 0;
+    padding: 0; /* geen interne marge zodat de container de pagina volledig uitvult */
+    min-height: 100vh; /* vul minimaal de volledige viewporthoogte */
+    display: block;
+}
+
+/* ===== HEADER ===== */
+
+header {
+    position: relative;
+    background-color: var(--bg-dark);
+    padding: 60px 20px 240px;
+    text-align: center;
+    overflow: visible;
+    
+}
+
+.header-content h1 {
+    color: var(--bg-light);
+    font-size: clamp(40px, 6vw, 70px);
+    position: relative;
+    z-index: 2;
+}
+
+/* ===== FOTO block ===== */
+
+
+/* ===== FOTO'S ===== */
+
+.header-photo {
+    position: absolute;
+    left: 50%;
+    transform: none;
+    transform-origin: center center;
+    /* responsive size: min 140px, scales with viewport, max 280px */
+    width: clamp(140px, 16vw, 280px);
+    max-width: 34%;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    
+}
+
+.photo-1 {   
+                            
+    top: 20%;
+    transform: translate(-50%, 0) translateX(210%);
+}
+
+.block  {
+    block-size: 1200px;
+
+}
+
+.header-photo-2-en-5 {
+    position: relative;
+    left: 50%;
+    transform: none;
+    transform-origin: center center;
+    /* responsive size: min 140px, scales with viewport, max 280px */
+    max-width: flex;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    
+}
+/* Position each photo relative to the center and offset outward */
+
+.photo-2 {                                                       /* logo */
+    top: -20%;
+    transform: translate(-50%, 0) translateX(0%);
+     width: 300px;
+}
+
+.photo-3 {
+    top: 10%;
+    transform: translate(-50%, 0) translateX(-400%);
+     width: 250px;
+}
+
+.photo-4 {
+    top: 35%;
+    transform: translate(-50%, 0) translateX(-220%);
+     width: 180px;
+} 
+
+.photo-5 {
+    top: 60%;
+    transform: translate(-10%, 0) translateX(-700%);
+     width: 180px;
+} 
+
+
+/* ===== NAV ===== */
+
+nav {
+    position: absolute;
+    top: 20px;
+    left: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    z-index: 3;
+}
+
+nav a {
+    text-decoration: none;
+    padding: 6px 20px;
+    color: var(--bg-light);
+    background-color: rgba(0,0,0,0.25);
+    
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+/* ===== CONTENT ===== */
+
+main {
+    padding: 40px 20px;
+    padding-top: auto;
+    background-color: var(--bg-blue);
+}
+
+section {
+    max-width: 900px;
+    margin: 0 auto 60px;
+}
+
+section h2 {
+    margin-bottom: 10px;
+    font-size: 64px;
+    color: var(--bg-dark);
+    font-weight: bold;
+} 
+
+
+section p {
+    margin-bottom: 20px;
+    font-size: 32px;
+    color: var(--bg-dark);
+    font-weight: normal;
+} 
+/* ===== FORM ===== */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;  
+    color: var(--bg-blue);
+    
+}
+
+
+input, textarea {
+    padding: 20px;
+    font-size: 32px;
+    font-weight: normal;
+    background-color: var(--bg-dark);
+    border-radius: 16px;
+    border: none;
+} 
+
+#messageForm input,
+#messageForm textarea {
+    color: var(--bg-blue);
+    
+}
+
+#messageForm input::placeholder,
+#messageForm textarea::placeholder {
+    color: var(--bg-blue);
+}
+
+button {
+    background-color:var(--bg-green);
+    color: var(--bg-light);
+    font-size: 30px;
+    font-weight: bold;
+    border: none;
+    border-radius: 16px;
+    padding: 20px;
+    cursor: pointer;
+} 
+
+button.section {
+    width: 300px;
+    position: relative;
+    top: -140px;
+    left: 55rem;
+    background-color: transparent;
+    color: var(--bg-light);
+    font-size: 30px;
+    font-weight: bold;
+    border: 0.25rem, solid, var(--bg-greentrans);
+    border-radius: 16px;
+    padding: 20px;
+    cursor: pointer;
+
+} 
+
+button:hover {
+    opacity: 0.85;
+}
+
+button.top {
+    background-color: transparent;
+    
+    color: var(--bg-light);
+    font-size: 20px;
+    font-weight: bold;
+    border: 0.25rem solid;
+    border-radius: 4px;
+    padding: 10px;
+    cursor: pointer;
+} 
+
+/* ===== BERICHTEN ===== */
+
+#messages {
+    margin-top: 30px;
+    }
+
+.message {
+    background: var(--bg-light);
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    position: relative;
+    transition: background-color 0.18s ease, box-shadow 0.18s ease, transform 0.12s ease;
+}
+
+/* Visuele stijl voor verwijderbare berichten */
+.message.deletable {
+    background: var(--bg-light); /* licht rode achtergrond om te waarschuwen */
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(192,57,43,0.06);
+}
+
+.message strong {
+    color: var(--bg-blue);
+    font-size: 20px;
+}
+
+.message p {
+    color: var(--bg-blue);
+    font-size: 40px;
+}
+
+/* Delete button for messages */
+.delete-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: transparent;
+    color: var(--bg-green);
+    border: 2px solid var(--bg-green);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    transition: background-color 0.12s ease, color 0.12s ease, transform 0.08s ease;
+}
+
+/* Make button more prominent on deletable messages */
+.message.deletable .delete-btn {
+    background: transparent;
+    color: var(--bg-green);
+    border-color: var(--bg-green);
+}
+
+.delete-btn:hover { transform: translateY(-1px); opacity: 0.95; }
+
+/* Label voor eigen berichten */
+.message .you { 
+    font-size: 12px; 
+    color: var(--bg-light); 
+    margin-left: 8px; 
+    font-weight: normal; 
+}
+
+/* Admin controls */
+.admin-controls { 
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    z-index: 1000;
+    background-color: transparent;
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: none;
+}
+
+.admin-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--bg-light);
+    border: 1px solid rgba(244, 231, 166, 0.3);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s;
+}
+.admin-btn:hover { 
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--bg-light);
+}
+#adminStatus { 
+    color: var(--bg-light);
+    font-size: 12px;
+    margin-left: 8px;
+}
+
+/* ===== FOOTER ===== */
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--bg-dark);
+    color: var(--bg-light);
+    position: absolute;
+    width: 100%;
+}
+
+/* ===== MOBIEL ===== */
+
+@media (max-width: 768px) {
+
+    /* Header & foto's: zet absolute items naar flow zodat ze stapelen */
+    header {
+        padding: 40px 20px 120px;
+    }
+
+    .header-content h1 {
+        position: static;
+        font-size: clamp(28px, 8vw, 40px);
+        margin-top: 10px;
+        color: var(--bg-light);
+        z-index: 2;
+        text-align: center;
+    }
+
+    .header-photo,
+    .header-photo-2-en-3 {
+        position: relative;
+        background-position: center;
+        left: auto;
+        transform: none;
+        
+        width: 60%;
+        max-width: 300px;
+        margin: 12px auto;
+        display: block;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    /* verwijder absolute offsets die niet meer nodig zijn */
+    .photo-2 {
+        bottom: auto;
+        top: auto;
+        left: auto;
+    }
+
+    .photo-3 {
+        bottom: auto;
+        top: auto;
+        left: auto;
+    }
+
+    .photo-3 {
+    bottom: auto;
+    top: auto;
+    left: auto;
+} 
+
+    /* Navigatie: gecentreerd en compacter */
+    nav {
+        position: relative;
+        justify-content: center;
+        margin: 10px auto 20px;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        padding: 8px 10px;
+        font-size: 16px;
+    }
+
+    /* Content: kleinere paddings en lettergroottes */
+    main {
+        padding-top: 160px;
+        padding: 20px;
+    }
+
+    section {
+        margin-bottom: 30px;
+        padding: 0 10px;
+    }
+
+    section h2 {
+        font-size: 28px;
+        margin-bottom: 8px;
+    }
+
+    section p {
+        font-size: 18px;
+    }
+
+    /* Formulier: compactere inputs */
+    form {
+        gap: 8px;
+    }
+
+    input, textarea {
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 12px;
+    }
+
+    button {
+        font-size: 18px;
+        padding: 12px;
+        border-radius: 12px;
+    }
+
+    /* Berichten: kleinere tekst */
+    .message p {
+        font-size: 16px;
+    }
+}
+
+/* Extra aanpassingen voor zeer kleine schermen */
+@media (max-width: 420px) {
+    .header-photo, .header-photo-2-en-3 { width: 90%; }
+    section h2 { font-size: 22px; }
+    section p { font-size: 16px; }
+}
+
