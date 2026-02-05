@@ -119,39 +119,60 @@ function updateAdminUI() {
     status.textContent = logged ? 'Ingelogd als hoofd-eigenaar' : 'Niet ingelogd';
 }
 
-async function sendMagicLink() {
-    try {
-        const res = await fetch('/api/send-magic-link', { method: 'POST' });
-        if (!res.ok) throw new Error('send_failed');
-        alert('Check je e-mail voor de login link.');
-    } catch (err) {
-        alert('Kon geen login link sturen. Probeer later opnieuw.');
-    }
+async function requestAdminCode(password) {
+    const res = await fetch('/api/request-admin-code', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password })
+    });
+    if (!res.ok) throw new Error('request_failed');
+    const data = await res.json();
+    if (!data || !data.token) throw new Error('request_failed');
+    return data.token;
 }
 
-async function verifyMagicLink(token) {
+async function verifyAdminCode(token, code) {
+    const res = await fetch('/api/verify-admin-code', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token, code })
+    });
+    if (!res.ok) throw new Error('verify_failed');
+    const data = await res.json();
+    if (!data || !data.ok) throw new Error('verify_failed');
+}
+
+async function adminLogin() {
+    const password = prompt('Voer admin wachtwoord in:');
+    if (!password) {
+        alert('Geen wachtwoord ingevuld.');
+        return;
+    }
+
+    let token = null;
     try {
-        const url = `/api/verify-token?token=${encodeURIComponent(token)}`;
-        const res = await fetch(url);
-        if (!res.ok) throw new Error('verify_failed');
-        const data = await res.json();
-        if (!data || !data.ok) throw new Error('verify_failed');
+        token = await requestAdminCode(password);
+        alert('De code is per e-mail verstuurd.');
+    } catch (err) {
+        alert('Kon geen code sturen. Controleer het wachtwoord.');
+        return;
+    }
+
+    const code = prompt('Vul de code uit de e-mail in:');
+    if (!code) {
+        alert('Geen code ingevuld.');
+        return;
+    }
+
+    try {
+        await verifyAdminCode(token, code.trim());
         localStorage.setItem('isAdmin', '1');
         alert('Ingelogd als hoofd-eigenaar.');
         updateAdminUI();
         displayMessages();
     } catch (err) {
-        alert('Login link ongeldig of verlopen.');
+        alert('Code ongeldig of verlopen.');
     }
-}
-
-function consumeTokenFromUrl() {
-    const params = new URLSearchParams(window.location.search);
-    const token = params.get('token');
-    if (!token) return;
-    verifyMagicLink(token);
-    const newUrl = window.location.pathname + window.location.hash;
-    history.replaceState(null, '', newUrl);
 }
 
 function adminLogout() {
@@ -174,10 +195,9 @@ const adminLoginBtn = document.getElementById('adminLoginBtn');
 const adminLogoutBtn = document.getElementById('adminLogoutBtn');
 const adminDeleteAllBtn = document.getElementById('adminDeleteAllBtn');
 
-adminLoginBtn.addEventListener('click', sendMagicLink);
+adminLoginBtn.addEventListener('click', adminLogin);
 adminLogoutBtn.addEventListener('click', adminLogout);
 adminDeleteAllBtn.addEventListener('click', deleteAllMessages);
 
 // Update UI on load
-consumeTokenFromUrl();
 updateAdminUI();
