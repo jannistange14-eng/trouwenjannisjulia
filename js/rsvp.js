@@ -1,3 +1,5 @@
+const SHARED_POST_PASSWORD = "Champagne Toren";
+
 // Client ID voor eigenaarschap
 let clientId = localStorage.getItem('clientId');
 if (!clientId) {
@@ -34,6 +36,16 @@ function escapeHtml(unsafe) {
 // RSVP formulier handler
 document.getElementById('rsvpForm').addEventListener('submit', function (e) {
     e.preventDefault();
+
+    const provided = prompt('Vul het algemene wachtwoord in om je RSVP te plaatsen:');
+    if (!provided) {
+        alert('Geen wachtwoord ingevuld.');
+        return;
+    }
+    if (provided !== SHARED_POST_PASSWORD) {
+        alert('Onjuist wachtwoord.');
+        return;
+    }
     
     const name = document.getElementById('rsvpName').value.trim();
     const guests = document.getElementById('guests').value || '1';

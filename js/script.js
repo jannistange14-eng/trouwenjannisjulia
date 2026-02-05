@@ -1,3 +1,5 @@
+const SHARED_POST_PASSWORD = "Champagne Toren";
+
 const form = document.getElementById("messageForm");
 const messagesDiv = document.getElementById("messages");
 
@@ -15,6 +17,16 @@ displayMessages();
 
 form.addEventListener("submit", function (e) {
     e.preventDefault();
+
+    const provided = prompt("Vul het algemene wachtwoord in om een bericht te plaatsen:");
+    if (!provided) {
+        alert("Geen wachtwoord ingevuld.");
+        return;
+    }
+    if (provided !== SHARED_POST_PASSWORD) {
+        alert("Onjuist wachtwoord.");
+        return;
+    }
 
     const name = document.getElementById("name").value.trim();
     const message = document.getElementById("message").value.trim();
