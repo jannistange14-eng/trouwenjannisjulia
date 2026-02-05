@@ -1,1 +1,23 @@
 Wachtwoord hoofd admin: JJ.tange_2024
+
+
+
+
+
+
+
+uploaden in git hub 
+Voor automatische updates in de toekomst:
+Elke keer als je iets wijzigt in VS Code:
+
+git add .                                           //invoeren in terminal
+git commit -m "Beschrijving van je wijziging"       //invoeren in terminal
+git push                                            //invoeren in terminal
+
+Of gebruik VS Code Source Control (Ctrl+Shift+G):
+
+Klik op het '+' icoon bij gewijzigde bestanden
+Typ een commit message bovenaan
+Druk op het ✓ vinkje
+Klik op de '...' → Push
+Binnen 30 seconden staat je wijziging live! 🎉

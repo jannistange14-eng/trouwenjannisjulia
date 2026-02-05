@@ -103,9 +103,9 @@ function updateAdminUI() {
     const adminExists = !!localStorage.getItem('admin');
     const logged = isAdmin();
 
-    // Toon "stel hoofd-wachtwoord in" alleen als je als admin bent ingelogd
+    // Laat het instellen van een hoofd-wachtwoord toe bij eerste gebruik
     if (!adminExists) {
-        setBtn.style.display = 'none';
+        setBtn.style.display = 'inline-block';
         loginBtn.style.display = 'none';
         logoutBtn.style.display = 'none';
         deleteAllBtn.style.display = 'none';
@@ -196,4 +196,3 @@ adminDeleteAllBtn.addEventListener('click', deleteAllMessages);
 
 // Update UI on load
 updateAdminUI();
-
