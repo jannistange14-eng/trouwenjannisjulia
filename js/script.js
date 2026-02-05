@@ -94,78 +94,52 @@ function isAdmin() {
 }
 
 function updateAdminUI() {
-    const setBtn = document.getElementById('setAdminBtn');
     const loginBtn = document.getElementById('adminLoginBtn');
     const logoutBtn = document.getElementById('adminLogoutBtn');
     const deleteAllBtn = document.getElementById('adminDeleteAllBtn');
     const status = document.getElementById('adminStatus');
 
-    const adminExists = !!localStorage.getItem('admin');
     const logged = isAdmin();
 
-    // Laat het instellen van een hoofd-wachtwoord toe bij eerste gebruik
-    if (!adminExists) {
-        setBtn.style.display = 'inline-block';
-        loginBtn.style.display = 'none';
-        logoutBtn.style.display = 'none';
-        deleteAllBtn.style.display = 'none';
-        status.textContent = 'Geen hoofd-eigenaar ingesteld';
-    } else {
-        setBtn.style.display = logged ? 'inline-block' : 'none';
-        loginBtn.style.display = logged ? 'none' : 'inline-block';
-        logoutBtn.style.display = logged ? 'inline-block' : 'none';
-        deleteAllBtn.style.display = logged ? 'inline-block' : 'none';
-        status.textContent = logged ? 'Ingelogd als hoofd-eigenaar' : 'Niet ingelogd';
+    loginBtn.style.display = logged ? 'none' : 'inline-block';
+    logoutBtn.style.display = logged ? 'inline-block' : 'none';
+    deleteAllBtn.style.display = logged ? 'inline-block' : 'none';
+    status.textContent = logged ? 'Ingelogd als hoofd-eigenaar' : 'Niet ingelogd';
+}
+
+async function sendMagicLink() {
+    try {
+        const res = await fetch('/api/send-magic-link', { method: 'POST' });
+        if (!res.ok) throw new Error('send_failed');
+        alert('Check je e-mail voor de login link.');
+    } catch (err) {
+        alert('Kon geen login link sturen. Probeer later opnieuw.');
     }
 }
 
-async function hashPassword(password, salt) {
-    const enc = new TextEncoder();
-    const data = enc.encode(salt + password);
-    const buf = await crypto.subtle.digest('SHA-256', data);
-    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
-}
-
-function generateSalt() {
-    const arr = crypto.getRandomValues(new Uint8Array(16));
-    return Array.from(arr).map(b => b.toString(16).padStart(2, '0')).join('');
-}
-
-async function setAdminPassword() {
-    const existing = localStorage.getItem('admin');
-    if (existing && !isAdmin()) {
-        alert('Alleen een ingelogde hoofd-eigenaar kan het hoofd-wachtwoord wijzigen. Log eerst in.');
-        return;
-    }
-
-    const pw1 = prompt('Voer nieuw hoofd-wachtwoord in:');
-    if (!pw1) return alert('Wachtwoord niet ingesteld.');
-    const pw2 = prompt('Bevestig nieuw hoofd-wachtwoord:');
-    if (pw1 !== pw2) return alert('Wachtwoordconfirmatie komt niet overeen.');
-
-    const salt = generateSalt();
-    const hash = await hashPassword(pw1, salt);
-    localStorage.setItem('admin', JSON.stringify({ salt, hash }));
-    alert('Hoofd-wachtwoord succesvol ingesteld.');
-    updateAdminUI();
-}
-
-async function adminLogin() {
-    const admin = localStorage.getItem('admin');
-    if (!admin) return alert('Er is geen hoofd-wachtwoord ingesteld. Stel eerst een wachtwoord in.');
-    const { salt, hash } = JSON.parse(admin);
-
-    const pw = prompt('Voer hoofd-wachtwoord in:');
-    if (!pw) return;
-    const h = await hashPassword(pw, salt);
-    if (h === hash) {
+async function verifyMagicLink(token) {
+    try {
+        const url = `/api/verify-token?token=${encodeURIComponent(token)}`;
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('verify_failed');
+        const data = await res.json();
+        if (!data || !data.ok) throw new Error('verify_failed');
         localStorage.setItem('isAdmin', '1');
         alert('Ingelogd als hoofd-eigenaar.');
         updateAdminUI();
         displayMessages();
-    } else {
-        alert('Onjuist wachtwoord.');
+    } catch (err) {
+        alert('Login link ongeldig of verlopen.');
     }
+}
+
+function consumeTokenFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get('token');
+    if (!token) return;
+    verifyMagicLink(token);
+    const newUrl = window.location.pathname + window.location.hash;
+    history.replaceState(null, '', newUrl);
 }
 
 function adminLogout() {
@@ -184,15 +158,14 @@ function deleteAllMessages() {
 }
 
 // Koppel admin knoppen
-const setAdminBtn = document.getElementById('setAdminBtn');
 const adminLoginBtn = document.getElementById('adminLoginBtn');
 const adminLogoutBtn = document.getElementById('adminLogoutBtn');
 const adminDeleteAllBtn = document.getElementById('adminDeleteAllBtn');
 
-setAdminBtn.addEventListener('click', setAdminPassword);
-adminLoginBtn.addEventListener('click', adminLogin);
+adminLoginBtn.addEventListener('click', sendMagicLink);
 adminLogoutBtn.addEventListener('click', adminLogout);
 adminDeleteAllBtn.addEventListener('click', deleteAllMessages);
 
 // Update UI on load
+consumeTokenFromUrl();
 updateAdminUI();
