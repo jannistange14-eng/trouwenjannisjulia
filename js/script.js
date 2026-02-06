@@ -1,5 +1,5 @@
 const SHARED_POST_PASSWORD = "Champagne Toren";
-const ADMIN_PASSWORD = "VUL_HIER_ADMIN_WACHTWOORD_IN";
+const ADMIN_PASSWORD = "JJ.tange2024";
 
 const form = document.getElementById("messageForm");
 const messagesDiv = document.getElementById("messages");
@@ -126,7 +126,7 @@ async function adminLogin() {
         alert('Geen wachtwoord ingevuld.');
         return;
     }
-    if (password !== ADMIN_PASSWORD) {
+    if (password.trim() !== ADMIN_PASSWORD) {
         alert('Onjuist wachtwoord.');
         return;
     }
