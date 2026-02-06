@@ -1,4 +1,5 @@
 const SHARED_POST_PASSWORD = "Champagne Toren";
+const ADMIN_PASSWORD = "VUL_HIER_ADMIN_WACHTWOORD_IN";
 
 const form = document.getElementById("messageForm");
 const messagesDiv = document.getElementById("messages");
@@ -119,60 +120,21 @@ function updateAdminUI() {
     status.textContent = logged ? 'Ingelogd als hoofd-eigenaar' : 'Niet ingelogd';
 }
 
-async function requestAdminCode(password) {
-    const res = await fetch('/api/request-admin-code', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password })
-    });
-    if (!res.ok) throw new Error('request_failed');
-    const data = await res.json();
-    if (!data || !data.token) throw new Error('request_failed');
-    return data.token;
-}
-
-async function verifyAdminCode(token, code) {
-    const res = await fetch('/api/verify-admin-code', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ token, code })
-    });
-    if (!res.ok) throw new Error('verify_failed');
-    const data = await res.json();
-    if (!data || !data.ok) throw new Error('verify_failed');
-}
-
 async function adminLogin() {
     const password = prompt('Voer admin wachtwoord in:');
     if (!password) {
         alert('Geen wachtwoord ingevuld.');
         return;
     }
-
-    let token = null;
-    try {
-        token = await requestAdminCode(password);
-        alert('De code is per e-mail verstuurd.');
-    } catch (err) {
-        alert('Kon geen code sturen. Controleer het wachtwoord.');
+    if (password !== ADMIN_PASSWORD) {
+        alert('Onjuist wachtwoord.');
         return;
     }
 
-    const code = prompt('Vul de code uit de e-mail in:');
-    if (!code) {
-        alert('Geen code ingevuld.');
-        return;
-    }
-
-    try {
-        await verifyAdminCode(token, code.trim());
-        localStorage.setItem('isAdmin', '1');
-        alert('Ingelogd als hoofd-eigenaar.');
-        updateAdminUI();
-        displayMessages();
-    } catch (err) {
-        alert('Code ongeldig of verlopen.');
-    }
+    localStorage.setItem('isAdmin', '1');
+    alert('Ingelogd als hoofd-eigenaar.');
+    updateAdminUI();
+    displayMessages();
 }
 
 function adminLogout() {
