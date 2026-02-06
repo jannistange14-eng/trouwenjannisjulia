@@ -165,6 +165,16 @@ function adminLogout() {
 }
 
 function guestLogin() {
+    const provided = prompt('Vul het algemene wachtwoord in om als guest in te loggen:');
+    if (!provided) {
+        alert('Geen wachtwoord ingevuld.');
+        return;
+    }
+    if (provided !== SHARED_POST_PASSWORD) {
+        alert('Onjuist wachtwoord.');
+        return;
+    }
+
     localStorage.setItem('isGuest', '1');
     localStorage.removeItem('isAdmin');
     alert('Ingelogd als guest.');
