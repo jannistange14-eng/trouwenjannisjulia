@@ -6,86 +6,6 @@ if (!clientId) {
     localStorage.setItem('clientId', clientId);
 }
 
-// Admin check functie (zelfde als in script.js)
-function isAdmin() {
-    return localStorage.getItem('isAdmin') === '1';
-}
-
-function isGuest() {
-    return localStorage.getItem('isGuest') === '1';
-}
-
-function updateAuthUI() {
-    const loginBtn = document.getElementById('adminLoginBtn');
-    const guestLoginBtn = document.getElementById('guestLoginBtn');
-    const logoutBtn = document.getElementById('adminLogoutBtn');
-    const guestLogoutBtn = document.getElementById('guestLogoutBtn');
-    const status = document.getElementById('adminStatus');
-
-    const adminLogged = isAdmin();
-    const guestLogged = isGuest();
-
-    loginBtn.style.display = adminLogged ? 'none' : 'inline-block';
-    guestLoginBtn.style.display = guestLogged ? 'none' : 'inline-block';
-    logoutBtn.style.display = adminLogged ? 'inline-block' : 'none';
-    guestLogoutBtn.style.display = guestLogged ? 'inline-block' : 'none';
-
-    if (adminLogged) status.textContent = 'Ingelogd als admin';
-    else if (guestLogged) status.textContent = 'Ingelogd als guest';
-    else status.textContent = 'Niet ingelogd';
-}
-
-function adminLogin() {
-    const username = prompt('Voer admin gebruikersnaam in:');
-    if (!username) {
-        alert('Geen gebruikersnaam ingevuld.');
-        return;
-    }
-    const password = prompt('Voer admin wachtwoord in:');
-    if (!password) {
-        alert('Geen wachtwoord ingevuld.');
-        return;
-    }
-    if (username.trim() !== ADMIN_USERNAME || password.trim() !== ADMIN_PASSWORD) {
-        alert('Onjuiste admin-gegevens.');
-        return;
-    }
-
-    localStorage.setItem('isAdmin', '1');
-    localStorage.removeItem('isGuest');
-    alert('Ingelogd als admin.');
-    updateAuthUI();
-}
-
-function adminLogout() {
-    localStorage.removeItem('isAdmin');
-    alert('Uitgelogd.');
-    updateAuthUI();
-}
-
-function guestLogin() {
-    const provided = prompt('Vul het algemene wachtwoord in om als guest in te loggen:');
-    if (!provided) {
-        alert('Geen wachtwoord ingevuld.');
-        return;
-    }
-    if (provided !== SHARED_POST_PASSWORD) {
-        alert('Onjuist wachtwoord.');
-        return;
-    }
-
-    localStorage.setItem('isGuest', '1');
-    localStorage.removeItem('isAdmin');
-    alert('Ingelogd als guest.');
-    updateAuthUI();
-}
-
-function guestLogout() {
-    localStorage.removeItem('isGuest');
-    alert('Guest uitgelogd.');
-    updateAuthUI();
-}
-
 // Laad bestaande RSVP's
 let rsvps = JSON.parse(localStorage.getItem("rsvps")) || [];
 let attending = null;
@@ -263,17 +183,3 @@ document.getElementById('attendeesList').addEventListener('click', function (e) 
 
 // Laad aanwezigheidslijst bij het laden van de pagina
 displayAttendees();
-
-// Koppel auth knoppen
-const adminLoginBtn = document.getElementById('adminLoginBtn');
-const guestLoginBtn = document.getElementById('guestLoginBtn');
-const adminLogoutBtn = document.getElementById('adminLogoutBtn');
-const guestLogoutBtn = document.getElementById('guestLogoutBtn');
-
-adminLoginBtn.addEventListener('click', adminLogin);
-guestLoginBtn.addEventListener('click', guestLogin);
-adminLogoutBtn.addEventListener('click', adminLogout);
-guestLogoutBtn.addEventListener('click', guestLogout);
-
-// Update UI on load
-updateAuthUI();

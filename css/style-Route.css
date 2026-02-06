@@ -57,6 +57,42 @@ nav a {
     font-weight: bold;
 }
 
+/* Admin controls */
+.admin-controls {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    z-index: 1000;
+    background-color: transparent;
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: none;
+}
+
+.admin-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--bg-light);
+    border: 1px solid rgba(244, 231, 166, 0.3);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s;
+}
+.admin-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--bg-light);
+}
+#adminStatus {
+    color: var(--bg-light);
+    font-size: 12px;
+    margin-left: 8px;
+}
+
 /* Main content */
 main {
     padding: 40px 20px;
@@ -94,51 +130,76 @@ footer {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-    header { padding: 40px 20px 80px; 
+@media (max-width: 600px) {
+    header {
+        padding: 40px 16px 80px;
     }
-    nav { 
-        position: absolute; 
-        top: 15px;
-        justify-content: center; 
-        left: auto; 
-        margin-top: 2px; 
+    nav {
+        position: relative;
+        justify-content: center;
+        left: auto;
+        top: auto;
+        margin: 8px auto 16px;
+        flex-wrap: wrap;
     }
-    section h2 { 
+    .admin-controls {
+        top: 10px;
+        right: 10px;
+        padding: 6px 10px;
+        gap: 6px;
+    }
+    .admin-btn {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+    #adminStatus {
+        font-size: 11px;
+        margin-left: 4px;
+    }
+    section {
+        padding: 0 6px;
+    }
+    section h2 {
         font-size: 28px;
     }
-    section p { 
-        font-size: 16px; 
+    section p {
+        font-size: 16px;
     }
-    input, textarea { 
-        padding: 12px; 
-        font-size: 14px; 
-    }
-    button { 
-        font-size: 16px; 
-        padding: 10px;
-     }
-    
-    footer {
-    text-align: center;
-    padding: 40px 0px;
-    background-color: var(--bg-dark);
-    color: var(--bg-light);
-    min-height: fit-content;
-    position: relative; 
-    bottom: 0px;
-    width: 100%;
-}
 }
 
-@media (max-width: 420px) {
-    section { 
-        padding: 0 6px; 
+@media (min-width: 601px) and (max-width: 1200px) {
+    header {
+        padding: 50px 20px 100px;
     }
-    .header-content h1 { 
-        font-size: 28px; 
-        position: relative;
-        top: 20px;
+    nav {
+        left: 30px;
+        top: 18px;
+    }
+    .admin-controls {
+        top: 12px;
+        right: 16px;
+    }
+    section h2 {
+        font-size: 32px;
+    }
+    section p {
+        font-size: 17px;
+    }
+}
+
+@media (min-width: 1201px) {
+    header {
+        padding: 70px 24px 140px;
+    }
+    .admin-controls {
+        top: 18px;
+        right: 24px;
+    }
+    section h2 {
+        font-size: 38px;
+    }
+    section p {
+        font-size: 19px;
     }
 }
 

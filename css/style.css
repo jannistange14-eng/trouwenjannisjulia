@@ -351,21 +351,17 @@ footer {
     width: 100%;
 }
 
-/* ===== MOBIEL ===== */
+/* ===== RESPONSIVE ===== */
 
-@media (max-width: 768px) {
-
-    /* Header & foto's: zet absolute items naar flow zodat ze stapelen */
+@media (max-width: 600px) {
     header {
-        padding: 40px 20px 120px;
+        padding: 40px 16px 120px;
     }
 
     .header-content h1 {
         position: static;
         font-size: clamp(28px, 8vw, 40px);
         margin-top: 10px;
-        color: var(--bg-light);
-        z-index: 2;
         text-align: center;
     }
 
@@ -375,40 +371,28 @@ footer {
         background-position: center;
         left: auto;
         transform: none;
-        
-        width: 60%;
+        width: 80%;
         max-width: 300px;
         margin: 12px auto;
         display: block;
         box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
 
-    /* verwijder absolute offsets die niet meer nodig zijn */
-    .photo-2 {
-        bottom: auto;
-        top: auto;
-        left: auto;
-    }
-
+    .photo-2,
     .photo-3 {
         bottom: auto;
         top: auto;
         left: auto;
     }
 
-    .photo-3 {
-    bottom: auto;
-    top: auto;
-    left: auto;
-} 
-
-    /* Navigatie: gecentreerd en compacter */
     nav {
         position: relative;
         justify-content: center;
         margin: 10px auto 20px;
         gap: 8px;
         flex-wrap: wrap;
+        left: auto;
+        top: auto;
     }
 
     nav a {
@@ -416,10 +400,26 @@ footer {
         font-size: 16px;
     }
 
-    /* Content: kleinere paddings en lettergroottes */
+    .admin-controls {
+        top: 10px;
+        right: 10px;
+        padding: 6px 10px;
+        gap: 6px;
+    }
+
+    .admin-btn {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    #adminStatus {
+        font-size: 11px;
+        margin-left: 4px;
+    }
+
     main {
-        padding-top: 160px;
         padding: 20px;
+        padding-top: 140px;
     }
 
     section {
@@ -436,7 +436,6 @@ footer {
         font-size: 18px;
     }
 
-    /* Formulier: compactere inputs */
     form {
         gap: 8px;
     }
@@ -453,16 +452,51 @@ footer {
         border-radius: 12px;
     }
 
-    /* Berichten: kleinere tekst */
+    button.section {
+        position: static;
+        width: 100%;
+        margin-top: 10px;
+    }
+
     .message p {
         font-size: 16px;
     }
 }
 
-/* Extra aanpassingen voor zeer kleine schermen */
-@media (max-width: 420px) {
-    .header-photo, .header-photo-2-en-3 { width: 90%; }
-    section h2 { font-size: 22px; }
-    section p { font-size: 16px; }
+@media (min-width: 601px) and (max-width: 1200px) {
+    header {
+        padding: 50px 20px 180px;
+    }
+
+    nav {
+        left: 30px;
+        top: 18px;
+    }
+
+    .admin-controls {
+        top: 12px;
+        right: 16px;
+    }
+
+    section h2 {
+        font-size: 48px;
+    }
+
+    section p {
+        font-size: 24px;
+    }
+
+    button.section {
+        position: static;
+        width: 260px;
+        margin-top: 10px;
+    }
+}
+
+@media (min-width: 1201px) {
+    .admin-controls {
+        top: 18px;
+        right: 24px;
+    }
 }
 

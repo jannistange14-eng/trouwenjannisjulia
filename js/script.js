@@ -104,91 +104,6 @@ messagesDiv.addEventListener("click", function (e) {
 });
 
 // --- Admin/Guest functies & handlers ---
-function isAdmin() {
-    return localStorage.getItem('isAdmin') === '1';
-}
-
-function isGuest() {
-    return localStorage.getItem('isGuest') === '1';
-}
-
-function updateAuthUI() {
-    const loginBtn = document.getElementById('adminLoginBtn');
-    const guestLoginBtn = document.getElementById('guestLoginBtn');
-    const logoutBtn = document.getElementById('adminLogoutBtn');
-    const guestLogoutBtn = document.getElementById('guestLogoutBtn');
-    const deleteAllBtn = document.getElementById('adminDeleteAllBtn');
-    const status = document.getElementById('adminStatus');
-
-    const adminLogged = isAdmin();
-    const guestLogged = isGuest();
-
-    loginBtn.style.display = adminLogged ? 'none' : 'inline-block';
-    guestLoginBtn.style.display = guestLogged ? 'none' : 'inline-block';
-    logoutBtn.style.display = adminLogged ? 'inline-block' : 'none';
-    guestLogoutBtn.style.display = guestLogged ? 'inline-block' : 'none';
-    deleteAllBtn.style.display = adminLogged ? 'inline-block' : 'none';
-
-    if (adminLogged) status.textContent = 'Ingelogd als admin';
-    else if (guestLogged) status.textContent = 'Ingelogd als guest';
-    else status.textContent = 'Niet ingelogd';
-}
-
-async function adminLogin() {
-    const username = prompt('Voer admin gebruikersnaam in:');
-    if (!username) {
-        alert('Geen gebruikersnaam ingevuld.');
-        return;
-    }
-    const password = prompt('Voer admin wachtwoord in:');
-    if (!password) {
-        alert('Geen wachtwoord ingevuld.');
-        return;
-    }
-    if (username.trim() !== ADMIN_USERNAME || password.trim() !== ADMIN_PASSWORD) {
-        alert('Onjuiste admin-gegevens.');
-        return;
-    }
-
-    localStorage.setItem('isAdmin', '1');
-    localStorage.removeItem('isGuest');
-    alert('Ingelogd als admin.');
-    updateAuthUI();
-    displayMessages();
-}
-
-function adminLogout() {
-    localStorage.removeItem('isAdmin');
-    alert('Uitgelogd.');
-    updateAuthUI();
-    displayMessages();
-}
-
-function guestLogin() {
-    const provided = prompt('Vul het algemene wachtwoord in om als guest in te loggen:');
-    if (!provided) {
-        alert('Geen wachtwoord ingevuld.');
-        return;
-    }
-    if (provided !== SHARED_POST_PASSWORD) {
-        alert('Onjuist wachtwoord.');
-        return;
-    }
-
-    localStorage.setItem('isGuest', '1');
-    localStorage.removeItem('isAdmin');
-    alert('Ingelogd als guest.');
-    updateAuthUI();
-    displayMessages();
-}
-
-function guestLogout() {
-    localStorage.removeItem('isGuest');
-    alert('Guest uitgelogd.');
-    updateAuthUI();
-    displayMessages();
-}
-
 function deleteAllMessages() {
     if (!isAdmin()) return alert('Alleen ingelogde hoofd-eigenaar kan alle berichten verwijderen.');
     if (!confirm('Weet je zeker dat je alle berichten wilt verwijderen? Dit kan niet ongedaan worden gemaakt.')) return;
@@ -197,18 +112,8 @@ function deleteAllMessages() {
     displayMessages();
 }
 
-// Koppel admin knoppen
-const adminLoginBtn = document.getElementById('adminLoginBtn');
-const guestLoginBtn = document.getElementById('guestLoginBtn');
-const adminLogoutBtn = document.getElementById('adminLogoutBtn');
-const guestLogoutBtn = document.getElementById('guestLogoutBtn');
+// Koppel admin delete-all knop
 const adminDeleteAllBtn = document.getElementById('adminDeleteAllBtn');
-
-adminLoginBtn.addEventListener('click', adminLogin);
-guestLoginBtn.addEventListener('click', guestLogin);
-adminLogoutBtn.addEventListener('click', adminLogout);
-guestLogoutBtn.addEventListener('click', guestLogout);
-adminDeleteAllBtn.addEventListener('click', deleteAllMessages);
-
-// Update UI on load
-updateAuthUI();
+if (adminDeleteAllBtn) {
+    adminDeleteAllBtn.addEventListener('click', deleteAllMessages);
+}
