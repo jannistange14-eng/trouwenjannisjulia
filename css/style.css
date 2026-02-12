@@ -502,6 +502,17 @@ footer {
         border-radius: 12px;
     }
 
+    .message-option {
+        font-size: 16px;
+        padding: 10px 12px;
+        border-radius: 12px;
+    }
+
+    .message-options {
+        gap: 8px 12px;
+        font-size: 18px;
+    }
+
     button.section {
          position: static;
         left: 50%;
