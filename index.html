@@ -21,11 +21,11 @@
 
 <header>
     <nav>
-        <a href="Ons verhaal.html" class="top">Ons verhaal</a>
-        <a href="Timeline.html" class="top">Time line</a>
-        <a href="Route.html" class="top">Route</a>
-        <a href="FAQ.html" class="top">FAQ</a>
-        <a href="rsvp.html" class="top">RSVP</a>
+        <a href="pages/Ons%20verhaal.html" class="top">Ons verhaal</a>
+        <a href="pages/Timeline.html" class="top">Time line</a>
+        <a href="pages/Route.html" class="top">Route</a>
+        <a href="pages/FAQ.html" class="top">FAQ</a>
+        <a href="pages/rsvp.html" class="top">RSVP</a>
         <a href="#gastenboek" class="top">Vragen</a>
     </nav>
 
@@ -38,10 +38,10 @@
 </header>
 
 <div class="block"> 
-    <img src="images/foto 1.jpg" class="header-photo-2-en-5 photo-2" alt="">
-    <img src="images/foto 2.jpg" class="header-photo-2-en-5 photo-3" alt="">
-    <img src="images/foto 3.jpg" class="header-photo-2-en-5 photo-4" alt="">
-    <img src="images/foto 4.jpg" class="header-photo-2-en-5 photo-5" alt="">
+    <img src="images/foto%201.jpg" class="header-photo-2-en-5 photo-2" alt="">
+    <img src="images/foto%202.jpg" class="header-photo-2-en-5 photo-3" alt="">
+    <img src="images/foto%203.jpg" class="header-photo-2-en-5 photo-4" alt="">
+    <img src="images/foto%204.jpg" class="header-photo-2-en-5 photo-5" alt="">
     
 </div>
 
@@ -50,47 +50,57 @@
     <section id="home">
         <h2>Welkom</h2>
         <p>Hier komt informatie over onze bruiloft.</p>
-        <button class="section" onclick="location.href='rsvp.html'">Naar Informatie</button>
+        <button class="section" onclick="location.href='pages/rsvp.html'">Naar Informatie</button>
     </section>
 
     <section id="verhaal">
         <h2>Ons verhaal</h2>
         <p>Hier komt ons verhaal.</p>
-        <button class="section" onclick="location.href='Ons verhaal.html'">Naar Ons verhaal</button>
+        <button class="section" onclick="location.href='pages/Ons%20verhaal.html'">Naar Ons verhaal</button>
     </section>
 
     <section id="timeline">
         <h2>Time line</h2>
         <p>Hier vind je het programma van de dag.</p>
-        <button class="section" onclick="location.href='Timeline.html'">Naar Time line</button>
+        <button class="section" onclick="location.href='pages/Timeline.html'">Naar Time line</button>
     </section>
 
     <section id="route">
         <h2>Route</h2>
         <p>Adres, route en eventueel overnachting.</p>
-        <button class="section" onclick="location.href='Route.html'">Naar Route</button>
+        <button class="section" onclick="location.href='pages/Route.html'">Naar Route</button>
     </section>
 
     <section id="faq">
         <h2>FAQ</h2>
         <p>Veelgestelde vragen.</p>
-        <button class="section" onclick="location.href='FAQ.html'">Naar FAQ</button>
+        <button class="section" onclick="location.href='pages/FAQ.html'">Naar FAQ</button>
     </section>
 
     <section id="rsvp">
         <h2>RSVP</h2>
         <p>Laat even weten of je erbij bent.</p>
-        <button class="section" onclick="location.href='rsvp.html'">Naar RSVP</button>
+        <button class="section" onclick="location.href='pages/rsvp.html'">Naar RSVP</button>
     </section>
 
     <section id="gastenboek">
         <h2>Vragen of Opmerkingen</h2>
 
         <form id="messageForm">
-            <input type="text" id="name" placeholder="Jouw naam" required>
+            <div class="message-options">
+                <button type="button" class="message-option active" data-type="public">
+                    Open reactie (iedereen kan dit lezen)
+                </button>
+                <button type="button" class="message-option" data-type="private">
+                    Persoonlijke reactie (wordt gemaild)
+                </button>
+                <input type="hidden" name="messageType" id="messageType" value="public">
+            </div>
             <textarea id="message" placeholder="Je bericht of vraag" required></textarea>
             <button type="submit">Plaatsen</button>
         </form>
+
+        <div id="messageStatus" class="message-status" aria-live="polite"></div>
 
         <div id="messages" class="messages">
             <!-- Berichten worden hier weergegeven -->

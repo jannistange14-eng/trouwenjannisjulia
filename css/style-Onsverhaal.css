@@ -115,7 +115,8 @@ section h2 {
     
 }
 section h3 {
-    margin-top: -10px;
+    margin-top: -30px;
+    margin-bottom: 20px;
     font-size: 30px;
     color: var(--bg-dark);
     
@@ -126,6 +127,21 @@ section h4{
     margin: 0;
     text-align: left;
     line-height: 1.6;
+}
+
+/* Divider between story blocks */
+.story-divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto 10px;
+}
+
+.story-divider img {
+  width: clamp(500px, 30vw, 400px);
+  height: auto;
+  opacity: 0.5;
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.2));
 }
 
 
@@ -175,10 +191,11 @@ section h4{
 /* 11111111111111 Story block - tekst links, image rechts */
 .story-block-1 {
   max-width: 1200px;
-  margin: 80px auto;
+  margin: 120px auto;
   padding: 30px;
   background-color:  rgba(255, 255, 255, 0.192);
   border-radius: 10px;
+  position: relative;
 }
 
 .story-text-1 {
@@ -205,13 +222,14 @@ section h4{
   gap: 6px;
 }
 
-/* 2222222222 Story block - tekst links, image rechts */
+/* 2222222222 Story block - tekst rechts, image links */
 .story-block-2 {
   max-width: 1200px;
-  margin: 80px auto;
+  margin: 120px auto;
   padding: 30px;
   background-color: rgba(255, 255, 255, 0.192);
   border-radius: 10px;
+  position: relative;
 }
 
 .story-text-2 {
@@ -240,10 +258,11 @@ section h4{
 /* 333333333333 Story block - tekst links, image rechts */
 .story-block-3 {
   max-width: 1200px;
-  margin: 80px auto;
+  margin: 120px auto;
   padding: 30px;
   background-color: rgba(255, 255, 255, 0.192);
   border-radius: 10px;
+  position: relative;
 }
 
 .story-text-3 {
@@ -269,13 +288,14 @@ section h4{
   align-items: center;
   gap: 6px;
 }
-/* 444444444444444 Story block - tekst links, image rechts */
+/* 444444444444444 Story block - tekst rechts, image links */
 .story-block-4 {
   max-width: 1200px;
-  margin: 80px auto;
+  margin: 120px auto;
   padding: 30px;
   background-color: rgba(255, 255, 255, 0.192);
   border-radius: 10px;
+  position: relative;
 }
 
 .story-text-4 {
@@ -305,10 +325,11 @@ section h4{
 /* 555555555555555 Story block - tekst links, image rechts */
 .story-block-5 {
   max-width: 1200px;
-  margin: 80px auto;
+  margin: 150px auto;
   padding: 30px;
   background-color: rgba(255, 255, 255, 0.192);
   border-radius: 10px;
+  position: relative;
 }
 
 .story-text-5 {
@@ -334,6 +355,8 @@ section h4{
   align-items: center;
   gap: 6px;
 }
+
+
 
  /* -------------------------------footer----------------------------- */
 section p {
@@ -394,8 +417,17 @@ footer {
   .story-block-3,
   .story-block-4,
   .story-block-5 {
-    margin: 40px auto;
+    margin: 10px auto 80px;
     padding: 20px;
+  }
+  .story-text-1,
+  .story-text-2,
+  .story-text-3,
+  .story-text-4,
+  .story-text-5 {
+    max-width: 100%;
+    padding: 12px;
+    font-size: 16px;
   }
   .story-image-1,
   .story-image-2,
@@ -404,6 +436,94 @@ footer {
   .story-image-5 {
     width: 100%;
     height: auto;
+  }
+  .story-block-1::after,
+  .story-block-2::after,
+  .story-block-3::after,
+  .story-block-4::after {
+    bottom: -50px;
+    height: 50px;
+  }
+  .story-block-1::before,
+  .story-block-2::before,
+  .story-block-3::before,
+  .story-block-4::before {
+    bottom: -64px;
+    width: 14px;
+    height: 14px;
+    border-width: 2px;
+  }
+  .story-block-2::before,
+  .story-block-3::before,
+  .story-block-4::before,
+  .story-block-5::before {
+    top: -18px;
+    width: 14px;
+    height: 14px;
+    border-width: 2px;
+  }
+}
+
+@media (max-width: 400px) {
+  header {
+    padding: 32px 12px 70px;
+  }
+  nav a {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+  .admin-controls {
+    top: 8px;
+    right: 8px;
+    padding: 6px 8px;
+    gap: 6px;
+  }
+  section h2 {
+    font-size: 24px;
+  }
+  section h3 {
+    font-size: 18px;
+  }
+  .story-block-1,
+  .story-block-2,
+  .story-block-3,
+  .story-block-4,
+  .story-block-5 {
+    margin: 10px auto 80px;
+    padding: 16px;
+  }
+  .story-text-1,
+  .story-text-2,
+  .story-text-3,
+  .story-text-4,
+  .story-text-5 {
+    font-size: 14px;
+    padding: 10px;
+  }
+  .story-block-1::after,
+  .story-block-2::after,
+  .story-block-3::after,
+  .story-block-4::after {
+    bottom: -40px;
+    height: 40px;
+  }
+  .story-block-1::before,
+  .story-block-2::before,
+  .story-block-3::before,
+  .story-block-4::before {
+    bottom: -52px;
+    width: 12px;
+    height: 12px;
+    border-width: 2px;
+  }
+  .story-block-2::before,
+  .story-block-3::before,
+  .story-block-4::before,
+  .story-block-5::before {
+    top: -16px;
+    width: 12px;
+    height: 12px;
+    border-width: 2px;
   }
 }
 
@@ -430,8 +550,48 @@ footer {
   .story-block-3,
   .story-block-4,
   .story-block-5 {
-    margin: 60px auto;
+    margin: 0px auto 80px;
     padding: 24px;
+  }
+  .story-text-1,
+  .story-text-2,
+  .story-text-3,
+  .story-text-4,
+  .story-text-5 {
+    font-size: 17px;
+  }
+  .story-image-1,
+  .story-image-2,
+  .story-image-3,
+  .story-image-4,
+  .story-image-5 {
+    width: clamp(320px, 45vw, 460px);
+    height: auto;
+  }
+  .story-block-1::after,
+  .story-block-2::after,
+  .story-block-3::after,
+  .story-block-4::after {
+    bottom: -70px;
+    height: 70px;
+  }
+  .story-block-1::before,
+  .story-block-2::before,
+  .story-block-3::before,
+  .story-block-4::before {
+    bottom: -86px;
+    width: 16px;
+    height: 16px;
+    border-width: 2px;
+  }
+  .story-block-2::before,
+  .story-block-3::before,
+  .story-block-4::before,
+  .story-block-5::before {
+    top: -20px;
+    width: 16px;
+    height: 16px;
+    border-width: 2px;
   }
 }
 

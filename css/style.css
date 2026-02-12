@@ -98,7 +98,7 @@ header {
 
 .photo-3 {
     top: 10%;
-    transform: translate(-50%, 0) translateX(-400%);
+    transform: translate(-10%, 0) translateX(-400%);
      width: 250px;
 }
 
@@ -172,6 +172,36 @@ form {
     gap: 10px;  
     color: var(--bg-blue);
     
+}
+
+.message-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+    color: var(--bg-dark);
+    font-size: 24px;
+}
+
+.message-option {
+    background: transparent;
+    color: var(--bg-dark);
+    border: 2px solid var(--bg-green);
+    border-radius: 16px;
+    padding: 12px 16px;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.message-option.active {
+    background: var(--bg-green);
+    color: var(--bg-light);
+}
+
+.message-status {
+    margin-top: 12px;
+    font-size: 22px;
+    color: var(--bg-dark);
 }
 
 
@@ -358,6 +388,11 @@ footer {
         padding: 40px 16px 120px;
     }
 
+    .block  {
+    block-size: 1200px;
+
+}
+
     .header-content h1 {
         position: static;
         font-size: clamp(28px, 8vw, 40px);
@@ -379,10 +414,26 @@ footer {
     }
 
     .photo-2,
-    .photo-3 {
+    .photo-3,.photo-4,.photo-5 {
         bottom: auto;
         top: auto;
-        left: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 20px auto;
+    }
+
+    .photo-4 {
+        bottom: auto;
+        top: -80px;
+        left: 25%;
+        transform: translateX(-50%);
+    }
+
+    .photo-5 {
+        bottom: auto;
+        top: 250px;
+        left: 25%;
+        transform: translateX(-50%);
     }
 
     nav {
@@ -409,7 +460,7 @@ footer {
 
     .admin-btn {
         font-size: 12px;
-        padding: 6px 10px;
+        padding: 3px 5px;
     }
 
     #adminStatus {
@@ -418,14 +469,13 @@ footer {
     }
 
     main {
-        padding: 20px;
+        padding: 10px;
         padding-top: 140px;
     }
 
-    section {
-        margin-bottom: 30px;
-        padding: 0 10px;
-    }
+        section {
+            padding: 10 6px;
+        }
 
     section h2 {
         font-size: 28px;
@@ -447,19 +497,118 @@ footer {
     }
 
     button {
-        font-size: 18px;
-        padding: 12px;
+        font-size: 15px;
+        padding: 5px;
         border-radius: 12px;
     }
 
     button.section {
-        position: static;
-        width: 100%;
-        margin-top: 10px;
+         position: static;
+        left: 50%;
+        transform: translateX(10%);
+        width: 80%;
+        margin-top: 8px;
+        padding: 20px 0px 20px;
     }
 
     .message p {
         font-size: 16px;
+    }
+}
+
+@media (max-width: 400px) {
+    header {
+        padding: 32px 12px 100px;
+    }
+
+    .block  {
+    block-size: 1200px;
+
+}
+
+    .header-content h1 {
+        position: static;
+        font-size: clamp(28px, 8vw, 40px);
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .header-photo,
+    .header-photo-2-en-3 {
+        position: relative;
+        background-position: center;
+        left: auto;
+        transform: none;
+        width: 80%;
+        max-width: 300px;
+        margin: 12px auto;
+        display: block;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    
+    .photo-4 {
+        bottom: auto;
+        top: -80px;
+        left: 25%;
+        transform: translateX(-50%);
+    }
+
+    .photo-5 {
+        bottom: auto;
+        top: 250px;
+        left: 25%;
+        transform: translateX(-50%);
+    }
+
+    .header-content h1 {
+        font-size: clamp(24px, 9vw, 34px);
+    }
+
+    nav a {
+        font-size: 14px;
+        padding: 6px 8px;
+    }
+
+    .header-photo {
+        width: 70%;
+        max-width: 240px;
+    }
+
+    section h2 {
+        font-size: 24px;
+    }
+
+    section p {
+        font-size: 16px;
+    }
+
+    input, textarea {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    button.section {
+        position: static;
+        left: 50%;
+        transform: translateX(10%);
+        width: 80%;
+        margin-top: 8px;
+        padding: 20px 0px 20px;
+    }
+
+    .admin-btn {
+        font-size: 12px;
+        padding: 3px 5px;
+    }
+
+    .message p {
+        font-size: 14px;
     }
 }
 
@@ -468,9 +617,62 @@ footer {
         padding: 50px 20px 180px;
     }
 
+     .block  {
+    block-size: 1200px;
+
+}
+
+    .header-content h1 {
+        position: static;
+        font-size: clamp(28px, 8vw, 40px);
+        margin-top: 0px;
+        text-align: center;
+    }
+
+    .header-photo,
+    .header-photo-2-en-3 {
+        position: relative;
+        background-position: center;
+        left: auto;
+        transform: none;
+        width: 80%;
+        max-width: 300px;
+        margin: 12px auto;
+        display: block;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .photo-2 {
+        bottom: auto;
+        top: -100px;
+        left: 100%;
+        transform: translateX(-190%);
+    }
+    .photo-3 {
+        bottom: auto;
+        top: 310px;
+        left: 40%;
+        transform: translateX(-200%);
+    }
+    
+    .photo-4 {
+        bottom: auto;
+        top: 450px;
+        left: 10%;
+        transform: translateX(-50%);
+    }
+
+    .photo-5 {
+        bottom: auto;
+        top: 600px;
+        left: 45%;
+        transform: translateX(-50%);
+    }
+
     nav {
-        left: 30px;
-        top: 18px;
+        left: 100px;
+        top: 60px;
+        
     }
 
     .admin-controls {
@@ -488,9 +690,13 @@ footer {
 
     button.section {
         position: static;
+        left: 50%;
+        transform: translateX(180%);
         width: 260px;
         margin-top: 10px;
     }
+
+    
 }
 
 @media (min-width: 1201px) {

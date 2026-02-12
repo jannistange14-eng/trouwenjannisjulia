@@ -11,6 +11,19 @@ let rsvps = JSON.parse(localStorage.getItem("rsvps")) || [];
 let attending = null;
 let editingId = null; // Voor het bijwerken van een bestaande RSVP
 
+function getOwnerKey() {
+    if (isAdmin()) return 'admin';
+    if (isGuest()) return 'guest:' + (localStorage.getItem('guestUser') || '');
+    return '';
+}
+
+function isOwner(rsvp) {
+    const ownerKey = getOwnerKey();
+    if (!ownerKey) return false;
+    if (rsvp.ownerKey) return rsvp.ownerKey === ownerKey;
+    return rsvp.owner === clientId;
+}
+
 function setAttendance(val) {
     attending = val;
     document.getElementById('rsvpStatus').textContent = 'Geselecteerd: ' + (val ? 'Ja' : 'Nee');
@@ -35,16 +48,6 @@ document.getElementById('rsvpForm').addEventListener('submit', function (e) {
         return;
     }
 
-    const provided = prompt('Vul het algemene wachtwoord in om je RSVP te plaatsen:');
-    if (!provided) {
-        alert('Geen wachtwoord ingevuld.');
-        return;
-    }
-    if (provided !== SHARED_POST_PASSWORD) {
-        alert('Onjuist wachtwoord.');
-        return;
-    }
-    
     const name = document.getElementById('rsvpName').value.trim();
     const guests = document.getElementById('guests').value || '1';
     const message = document.getElementById('rsvpMessage').value.trim();
@@ -62,10 +65,15 @@ document.getElementById('rsvpForm').addEventListener('submit', function (e) {
         // Bestaande RSVP bijwerken
         const rsvp = rsvps.find(r => r.id === editingId);
         if (rsvp) {
+            if (!isOwner(rsvp)) {
+                alert('Je kunt deze RSVP niet aanpassen.');
+                return;
+            }
             rsvp.name = name;
             rsvp.attending = attending;
             rsvp.guests = guests;
             rsvp.message = message;
+            if (!rsvp.ownerKey) rsvp.ownerKey = getOwnerKey();
             localStorage.setItem("rsvps", JSON.stringify(rsvps));
             document.getElementById('rsvpStatus').innerHTML = '<strong style="color: green;">Je RSVP is bijgewerkt!</strong>';
             editingId = null;
@@ -80,6 +88,7 @@ document.getElementById('rsvpForm').addEventListener('submit', function (e) {
             guests: guests,
             message: message,
             owner: clientId,
+            ownerKey: getOwnerKey(),
             timestamp: new Date().toISOString()
         };
 
@@ -114,9 +123,8 @@ function displayAttendees() {
         const div = document.createElement("div");
         div.classList.add("attendee-item");
 
-        const admin = isAdmin();
-        const canEdit = admin || (rsvp.owner && rsvp.owner === clientId);
-        const youLabel = (rsvp.owner && rsvp.owner === clientId) ? ' <span class="you">(Jij)</span>' : '';
+        const canEdit = isOwner(rsvp);
+        const youLabel = canEdit ? ' <span class="you">(Jij)</span>' : '';
 
         const editHTML = canEdit ? `<button class="edit-btn" data-id="${rsvp.id}">Aanpassen</button>` : "";
         const deleteHTML = canEdit ? `<button class="delete-btn" data-id="${rsvp.id}">Verwijderen</button>` : "";
@@ -142,7 +150,7 @@ document.getElementById('attendeesList').addEventListener('click', function (e) 
         if (!rsvp) return;
         
         // Controleer rechten
-        if (!isAdmin() && (!rsvp.owner || rsvp.owner !== clientId)) {
+        if (!isOwner(rsvp)) {
             alert("Je kunt deze RSVP niet verwijderen.");
             return;
         }
@@ -161,7 +169,7 @@ document.getElementById('attendeesList').addEventListener('click', function (e) 
         if (!rsvp) return;
         
         // Controleer rechten
-        if (!isAdmin() && (!rsvp.owner || rsvp.owner !== clientId)) {
+        if (!isOwner(rsvp)) {
             alert("Je kunt deze RSVP niet aanpassen.");
             return;
         }

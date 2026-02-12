@@ -3,7 +3,17 @@ function isAdmin() {
 }
 
 function isGuest() {
-    return localStorage.getItem('isGuest') === '1';
+    return localStorage.getItem('guestUser') || localStorage.getItem('isGuest') === '1';
+}
+
+function getGuestDisplayName() {
+    return localStorage.getItem('guestName') || localStorage.getItem('guestUser') || 'Guest';
+}
+
+function getCurrentAuthName() {
+    if (isAdmin()) return 'Admin';
+    if (isGuest()) return getGuestDisplayName();
+    return '';
 }
 
 function updateAuthUI() {
@@ -26,7 +36,7 @@ function updateAuthUI() {
     if (deleteAllBtn) deleteAllBtn.style.display = adminLogged ? 'inline-block' : 'none';
 
     if (adminLogged) status.textContent = 'Ingelogd als admin';
-    else if (guestLogged) status.textContent = 'Ingelogd als guest';
+    else if (guestLogged) status.textContent = 'Ingelogd als ' + getGuestDisplayName();
     else status.textContent = 'Niet ingelogd';
 }
 
@@ -66,25 +76,38 @@ function adminLogout() {
 }
 
 function guestLogin() {
-    const provided = prompt('Vul het algemene wachtwoord in om als guest in te loggen:');
-    if (!provided) {
+    const username = prompt('Voer guest gebruikersnaam in:');
+    if (!username) {
+        alert('Geen gebruikersnaam ingevuld.');
+        return;
+    }
+    const password = prompt('Voer guest wachtwoord in:');
+    if (!password) {
         alert('Geen wachtwoord ingevuld.');
         return;
     }
-    if (provided !== SHARED_POST_PASSWORD) {
-        alert('Onjuist wachtwoord.');
+
+    const match = GUEST_ACCOUNTS.find(
+        (acc) => acc.username === username.trim() && acc.password === password.trim()
+    );
+    if (!match) {
+        alert('Onjuiste guest-gegevens.');
         return;
     }
 
     localStorage.setItem('isGuest', '1');
+    localStorage.setItem('guestUser', match.username);
+    localStorage.setItem('guestName', match.displayName || match.username);
     localStorage.removeItem('isAdmin');
-    alert('Ingelogd als guest.');
+    alert('Ingelogd als ' + (match.displayName || match.username) + '.');
     updateAuthUI();
     refreshAuthDependentViews();
 }
 
 function guestLogout() {
     localStorage.removeItem('isGuest');
+    localStorage.removeItem('guestUser');
+    localStorage.removeItem('guestName');
     alert('Guest uitgelogd.');
     updateAuthUI();
     refreshAuthDependentViews();

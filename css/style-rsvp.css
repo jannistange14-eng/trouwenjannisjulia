@@ -95,13 +95,14 @@ nav a {
 
 /* Main content */
 main {
-    padding: 40px 20px;
-    height: 100%;
+    padding: 0px 20px;
+    height: 1500px;
     background-color: var(--bg-blue);
 }
 
 section {
     max-width: 700px;
+    height: fit-content;
     margin: 0 auto 40px;
 }
 
@@ -151,6 +152,60 @@ button {
 button:hover { opacity: 0.9; }
 
 #rsvpStatus { margin-top: 12px; font-size: 16px; }
+
+/* Reacties */
+#messages {
+    margin-top: 20px;
+}
+
+.message {
+    background: rgba(255, 255, 255, 0.4);
+    padding: 14px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    position: relative;
+    transition: background-color 0.18s ease, box-shadow 0.18s ease, transform 0.12s ease;
+}
+
+.message.deletable {
+    background: rgba(255, 255, 255, 0.55);
+    box-shadow: 0 6px 18px rgba(192,57,43,0.06);
+}
+
+.message strong {
+    color: var(--bg-dark);
+    font-size: 16px;
+}
+
+.message p {
+    color: #333;
+    font-size: 16px;
+    margin-top: 6px;
+}
+
+.message .you {
+    font-size: 12px;
+    color: var(--bg-green);
+    margin-left: 6px;
+    font-weight: normal;
+}
+
+.delete-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: transparent;
+    color: var(--bg-green);
+    border: 2px solid var(--bg-green);
+    padding: 4px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    transition: background-color 0.12s ease, color 0.12s ease, transform 0.08s ease;
+}
+
+.delete-btn:hover { transform: translateY(-1px); opacity: 0.95; }
 
 /* Aanwezigheidslijst */
 .attendees-list {
@@ -286,6 +341,42 @@ footer {
     button {
         font-size: 16px;
         padding: 10px;
+    }
+}
+
+@media (max-width: 400px) {
+    header {
+        padding: 32px 12px 70px;
+    }
+    nav a {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+    .admin-controls {
+        top: 8px;
+        right: 8px;
+        padding: 6px 8px;
+        gap: 6px;
+    }
+    section h2 {
+        font-size: 24px;
+    }
+    section p {
+        font-size: 14px;
+    }
+    input, textarea {
+        padding: 10px;
+        font-size: 13px;
+    }
+    button {
+        font-size: 15px;
+        padding: 10px;
+    }
+    .attendee-header h3 {
+        font-size: 18px;
+    }
+    .attendee-message {
+        font-size: 14px;
     }
 }
 
