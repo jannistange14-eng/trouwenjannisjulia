@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foto Galerij - Bruiloft</title>
+    <link rel="stylesheet" href="../css/style-Gallery.css">
+</head>
+<body>
+    <nav class="navigation">
+        <a href="../index.html">Home</a>
+        <a href="Timeline.html">Timeline</a>
+        <a href="Ons verhaal.html">Ons verhaal</a>
+        <a href="Route.html">Route</a>
+        <a href="FAQ.html">FAQ</a>
+        <a href="rsvp.html">RSVP</a>
+        <a href="Gallery.html" class="active">Galerij</a>
+    </nav>
+
+    <div id="accessDenied" class="access-denied">
+        <div class="denied-message">
+            <h2>🔒 Toegang Geweigerd</h2>
+            <p>Deze pagina is alleen toegankelijk voor de beheerder.</p>
+            <p>Log in als admin om de fotogalerij te bekijken.</p>
+            <a href="../index.html" class="home-link">Terug naar Home</a>
+        </div>
+    </div>
+
+    <div id="galleryContent" class="gallery-content" style="display: none;">
+        <header class="gallery-header">
+            <h1>Foto Galerij</h1>
+            <p>Beheer en download alle bruiloft foto's</p>
+        </header>
+
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Gallery items will be generated here -->
+            
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightboxModal" class="lightbox-modal">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightboxImage">
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+
+    <script src="../js/auth-config.js"></script>
+    <script src="../js/auth-ui.js"></script>
+    <script>
+        // Check admin access on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const adminAccess = isAdmin();
+            const accessDenied = document.getElementById('accessDenied');
+            const galleryContent = document.getElementById('galleryContent');
+            
+            if (adminAccess) {
+                accessDenied.style.display = 'none';
+                galleryContent.style.display = 'block';
+                generateGallery();
+            } else {
+                accessDenied.style.display = 'flex';
+                galleryContent.style.display = 'none';
+            }
+        });
+
+        function generateGallery() {
+            const galleryGrid = document.getElementById('galleryGrid');
+            const totalItems = 180; // 3 columns × 60 rows
+            
+            for (let i = 1; i <= totalItems; i++) {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                
+                const imageContainer = document.createElement('div');
+                imageContainer.className = 'image-container';
+                imageContainer.id = `image-${i}`;
+                
+                // Placeholder for image
+                const img = document.createElement('img');
+                // Use foto 1.jpg for first 3 blocks as test
+                if (i <= 1) {
+                    img.src = '../images/foto 1.jpg';               } else if (i <= 2) {
+                    img.src = '../images/foto 2.jpg';               } else if (i <= 3) {
+                    img.src = '../images/foto 3.jpg';               } else if (i <= 4) { 
+                    img.src = '../images/foto 4.jpg';
+                    } else {
+                    img.src = '../images/placeholder.jpg';
+                }
+                img.alt = `Foto ${i}`;
+                img.className = 'gallery-image';
+                img.onerror = function() {
+                    this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"%3E%3Crect fill="%23f0f0f0" width="200" height="200"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="14" fill="%23999"%3EFoto ' + i + '%3C/text%3E%3C/svg%3E';
+                };
+                
+                // Add click event to open lightbox
+                img.onclick = function(e) {
+                    e.stopPropagation();
+                    openLightbox(this.src, `Foto ${i}`);
+                };
+                img.style.cursor = 'pointer';
+                
+                const itemNumber = document.createElement('span');
+                itemNumber.className = 'item-number';
+                itemNumber.textContent = `#${i}`;
+                
+                imageContainer.appendChild(img);
+                imageContainer.appendChild(itemNumber);
+                
+                // Download button
+                const downloadBtn = document.createElement('button');
+                downloadBtn.className = 'download-btn';
+                downloadBtn.innerHTML = '⬇ Download';
+                downloadBtn.onclick = function() {
+                    downloadImage(i);
+                };
+                
+                galleryItem.appendChild(imageContainer);
+                galleryItem.appendChild(downloadBtn);
+                galleryGrid.appendChild(galleryItem);
+            }
+        }
+
+        function downloadImage(imageNumber) {
+            const img = document.querySelector(`#image-${imageNumber} img`);
+            if (!img || !img.src) {
+                alert('Geen afbeelding beschikbaar om te downloaden');
+                return;
+            }
+            
+            // Create a temporary link element
+            const link = document.createElement('a');
+            link.href = img.src;
+            link.download = `bruiloft-foto-${imageNumber}.jpg`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Optional: Function to update image source (for when you add real images)
+        function updateImage(imageNumber, imagePath) {
+            const img = document.querySelector(`#image-${imageNumber} img`);
+            if (img) {
+                img.src = imagePath;
+            }
+        }
+
+        // Lightbox functionality
+        const modal = document.getElementById('lightboxModal');
+        const modalImg = document.getElementById('lightboxImage');
+        const captionText = document.getElementById('lightboxCaption');
+        const closeBtn = document.getElementsByClassName('lightbox-close')[0];
+
+        function openLightbox(imgSrc, caption) {
+            modal.style.display = 'block';
+            modalImg.src = imgSrc;
+            captionText.textContent = caption;
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        function closeLightbox() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+
+        // Close when clicking the X button
+        closeBtn.onclick = function() {
+            closeLightbox();
+        }
+
+        // Close when clicking outside the image
+        modal.onclick = function(event) {
+            if (event.target === modal || event.target === modalImg) {
+                closeLightbox();
+            }
+        }
+
+        // Close when pressing ESC key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && modal.style.display === 'block') {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>

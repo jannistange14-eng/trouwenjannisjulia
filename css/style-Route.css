@@ -48,6 +48,104 @@ nav {
     gap: 10px;
 }
 
+/* Map styling */
+.map-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 30px auto;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.map-container iframe {
+    display: block;
+    width: 100%;
+    height: 450px;
+}
+
+.route-description {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.route-description h3 {
+    color: var(--bg-dark);
+    font-size: 28px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.route-description p {
+    font-size: 20px;
+    line-height: 1.8;
+    color: #333;
+}
+
+.route-info {
+    padding-bottom: 60px;
+}
+
+/* Protected content styling */
+.protected-content {
+    position: relative;
+    transition: filter 0.3s ease;
+}
+
+.protected-content.blurred {
+    filter: blur(10px);
+    pointer-events: none;
+    user-select: none;
+}
+
+.blur-overlay {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(97, 15, 12, 0.95);
+    color: var(--bg-light);
+    padding: 30px 40px;
+    border-radius: 16px;
+    text-align: center;
+    z-index: 10;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    pointer-events: auto;
+}
+
+.protected-content.blurred .blur-overlay {
+    display: block;
+}
+
+.blur-overlay p {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.address-section {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.address-section h3 {
+    color: var(--bg-dark);
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.address-section p {
+    font-size: 20px;
+    line-height: 1.8;
+    color: #333;
+}
+
 nav a {
     text-decoration: none;
     padding: 6px 16px;
@@ -124,7 +222,7 @@ footer {
     background-color: var(--bg-dark);
     color: var(--bg-light);
     min-height: fit-content;
-    position: absolute; 
+    position: relative; 
     bottom: 0px;
     width: 100%;
 }
@@ -165,6 +263,26 @@ footer {
     section p {
         font-size: 16px;
     }
+    .blur-overlay {
+        padding: 20px 25px;
+        max-width: 90%;
+    }
+    .blur-overlay p {
+        font-size: 16px;
+    }
+    .address-section {
+        padding: 20px;
+        margin: 20px 10px;
+    }
+    .address-section h3 {
+        font-size: 22px;
+    }
+    .address-section p {
+        font-size: 16px;
+    }
+    .map-container iframe {
+        height: 300px;
+    }
 }
 
 @media (max-width: 400px) {
@@ -186,6 +304,18 @@ footer {
     }
     section p {
         font-size: 14px;
+    }
+    .blur-overlay {
+        padding: 15px 20px;
+    }
+    .blur-overlay p {
+        font-size: 14px;
+    }
+    .address-section {
+        padding: 15px;
+    }
+    .map-container iframe {
+        height: 250px;
     }
 }
 

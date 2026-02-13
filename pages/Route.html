@@ -30,9 +30,30 @@
         </header>
 
         <main>
-            <section>
-                <h2>Hier staat de route uitgeschreven vanaf de snelweg tot aan de camping.</h2>
-                                   
+            <section class="route-info">
+                <h2>Locatie & Routebeschrijving</h2>
+                
+                <div id="protectedContent" class="protected-content blurred">
+                    <div class="blur-overlay">
+                        <p>🔒 Log in als guest of admin om de locatie te zien</p>
+                    </div>
+                    
+                    <div class="map-container">
+                        <iframe 
+                            src=""
+                            width="100%" 
+                            height="450" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+
+                    <div class="address-section">
+                        <!-- Adres wordt geladen na authenticatie -->
+                    </div>
+                
             </section>
         </main>
 
@@ -42,3 +63,54 @@
     </div>
     <script src="../js/auth-config.js"></script>
     <script src="../js/auth-ui.js"></script>
+    <script>
+        let routeDataLoaded = false;
+
+        // Laad route data bestand alleen als ingelogd
+        function loadRouteData() {
+            if (routeDataLoaded) return;
+            if (isAdmin() || isGuest()) {
+                const script = document.createElement('script');
+                script.src = '../js/route-data.js';
+                script.onload = () => {
+                    routeDataLoaded = true;
+                };
+                document.head.appendChild(script);
+            }
+        }
+
+        // Controleer login status en toon/verberg content
+        function updateProtectedContent() {
+            const protectedContent = document.getElementById('protectedContent');
+            if (protectedContent) {
+                if (isAdmin() || isGuest()) {
+                    protectedContent.classList.remove('blurred');
+                    loadRouteData();
+                } else {
+                    protectedContent.classList.add('blurred');
+                    // Verwijder data bij uitloggen
+                    const mapIframe = document.querySelector('#protectedContent iframe');
+                    if (mapIframe) mapIframe.src = '';
+                    const addressSection = document.querySelector('.address-section');
+                    if (addressSection) addressSection.innerHTML = '<!-- Adres wordt geladen na authenticatie -->';
+                    routeDataLoaded = false;
+                }
+            }
+        }
+
+        // Update bij pagina laden
+        document.addEventListener('DOMContentLoaded', updateProtectedContent);
+
+        // Update bij login/logout
+        window.addEventListener('storage', updateProtectedContent);
+
+        // Update bij login button clicks (check na korte delay)
+        document.getElementById('adminLoginBtn')?.addEventListener('click', () => {
+            setTimeout(updateProtectedContent, 500);
+        });
+        document.getElementById('guestLoginBtn')?.addEventListener('click', () => {
+            setTimeout(updateProtectedContent, 500);
+        });
+        document.getElementById('adminLogoutBtn')?.addEventListener('click', updateProtectedContent);
+        document.getElementById('guestLogoutBtn')?.addEventListener('click', updateProtectedContent);
+    </script>
