@@ -13,20 +13,21 @@
     <div class="admin-controls">
         <button id="adminLoginBtn" class="admin-btn">Admin login</button>
         <button id="guestLoginBtn" class="admin-btn">Guest login</button>
-        <button id="adminLogoutBtn" class="admin-btn" style="display:none;">Admin uitloggen</button>
-        <button id="guestLogoutBtn" class="admin-btn" style="display:none;">Guest uitloggen</button>
+        <button id="adminLogoutBtn" class="admin-btn" style="display:none;">uitloggen</button>
+        <button id="guestLogoutBtn" class="admin-btn" style="display:none;">uitloggen</button>
         <button id="adminDeleteAllBtn" class="admin-btn" style="display:none;">Verwijder alle berichten</button>
         <span id="adminStatus"></span>
     </div>
 
 <header>
     <nav>
+        <a href="pages/Welkom.html" class="top">Welkom</a>
         <a href="pages/Ons%20verhaal.html" class="top">Ons verhaal</a>
         <a href="pages/Timeline.html" class="top">Time line</a>
         <a href="pages/Route.html" class="top">Route</a>
+        <a href="pages/Gallery.html" class="top">Galerij</a>
         <a href="pages/FAQ.html" class="top">FAQ</a>
         <a href="pages/rsvp.html" class="top">RSVP</a>
-        <a href="pages/Gallery.html" class="top">Galerij</a>
         <a href="#gastenboek" class="top">Vragen</a>
     </nav>
 
@@ -34,12 +35,13 @@
         <h1>Jannis & Julia</h1>
     </div>
 
-    <img src="images/foto.png" class="header-photo photo-1" alt="">
     
 </header>
 
 <div class="block"> 
-    <img src="images/foto%201.jpg" class="header-photo-2-en-5 photo-2" alt="">
+    
+    <img src="images/foto%201.png" class=" photo-2" alt="">
+    <img src="images/foto.png" class="header-photo photo-1" alt="">
     <img src="images/foto%202.jpg" class="header-photo-2-en-5 photo-3" alt="">
     <img src="images/foto%203.jpg" class="header-photo-2-en-5 photo-4" alt="">
     <img src="images/foto%204.jpg" class="header-photo-2-en-5 photo-5" alt="">
@@ -50,39 +52,52 @@
 
     <section id="home">
         <h2>Welkom</h2>
-        <p>Hier komt informatie over onze bruiloft.</p>
-        <button class="section" onclick="location.href='pages/rsvp.html'">Naar Informatie</button>
+        <p>Hier kan je de algemene informatie vinden voor onze bruiloft.</p>
+        <p>En indien nodig de uitnodiging online bekijken.</p>
+        <button class="section" onclick="location.href='pages/Welkom.html'">Welkom</button>
     </section>
 
     <section id="verhaal">
         <h2>Ons verhaal</h2>
-        <p>Hier komt ons verhaal.</p>
-        <button class="section" onclick="location.href='pages/Ons%20verhaal.html'">Naar Ons verhaal</button>
-    </section>
-
-    <section id="timeline">
-        <h2>Time line</h2>
-        <p>Hier vind je het programma van de dag.</p>
-        <button class="section" onclick="location.href='pages/Timeline.html'">Naar Time line</button>
-    </section>
-
-    <section id="route">
-        <h2>Route</h2>
-        <p>Adres, route en eventueel overnachting.</p>
-        <button class="section" onclick="location.href='pages/Route.html'">Naar Route</button>
-    </section>
-
-    <section id="faq">
-        <h2>FAQ</h2>
-        <p>Veelgestelde vragen.</p>
-        <button class="section" onclick="location.href='pages/FAQ.html'">Naar FAQ</button>
+        <p>Ben je benieuwd naar ons verhaal?</p>
+        <p>Deze kan je hier lezen.</p>
+        <button class="section" onclick="location.href='pages/Ons%20verhaal.html'">Ons verhaal</button>
     </section>
 
     <section id="rsvp">
         <h2>RSVP</h2>
         <p>Laat even weten of je erbij bent.</p>
-        <button class="section" onclick="location.href='pages/rsvp.html'">Naar RSVP</button>
+        <button class="section" onclick="location.href='pages/RSVP.html'">RSVP</button>
     </section>
+
+    <section id="timeline">
+        <h2>Time line</h2>
+        <p>Hier vind je het programma van de dag.</p>
+        <button class="section" onclick="location.href='pages/Timeline.html'">Time line</button>
+    </section>
+
+    <section id="route">
+        <h2>Route</h2>
+        <p>Adres en route naar onze trouw locatie kan je hier vinden.</p>
+        <p>Let op: deze is alleen zichtbaar als je bent ingelogd.</p>
+        <button class="section" onclick="location.href='pages/Route.html'">Route</button>
+    </section>
+
+    <section id="FAQ">
+        <h2>FAQ</h2>
+        <p>Veelgestelde vragen.</p>
+        <button class="section" onclick="location.href='pages/FAQ.html'">FAQ</button>
+    </section>
+ 
+
+     <section id="Gallery">
+         <h2>Gallerij</h2>
+         <p>Bekijke alle foto's van die bruiloft hier. </p>
+         <p>Deze zijn alleen zichtbaar als je ingelogd bent.</p>
+         <button class="section" onclick="location.href='pages/Gallery.html'">Gallery</button>
+        
+    </section>
+
 
     <section id="gastenboek">
         <h2>Vragen of Opmerkingen</h2>
@@ -90,10 +105,10 @@
         <form id="messageForm">
             <div class="message-options">
                 <button type="button" class="message-option active" data-type="public">
-                    Open reactie (iedereen kan dit lezen)
+                    Open reactie (Voor iedereen)
                 </button>
                 <button type="button" class="message-option" data-type="private">
-                    Persoonlijke reactie (wordt gemaild)
+                    Persoonlijke reactie (word gemaild)
                 </button>
                 <input type="hidden" name="messageType" id="messageType" value="public">
             </div>

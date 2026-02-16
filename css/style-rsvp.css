@@ -96,7 +96,7 @@ nav a {
 /* Main content */
 main {
     padding: 0px 20px;
-    height: 1500px;
+    height: auto;
     background-color: var(--bg-blue);
 }
 

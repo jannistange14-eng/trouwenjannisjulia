@@ -20,8 +20,8 @@
     <div id="accessDenied" class="access-denied">
         <div class="denied-message">
             <h2>🔒 Toegang Geweigerd</h2>
-            <p>Deze pagina is alleen toegankelijk voor de beheerder.</p>
-            <p>Log in als admin om de fotogalerij te bekijken.</p>
+            <p>Deze pagina word vrij gegeven na de bruiloft wanneer de foto's beschikbaar zijn.</p>
+            <p>Momenteel alleen beschikbaar voor admin</p>
             <a href="../index.html" class="home-link">Terug naar Home</a>
         </div>
     </div>
@@ -51,10 +51,11 @@
         // Check admin access on page load
         window.addEventListener('DOMContentLoaded', function() {
             const adminAccess = isAdmin();
+            //const guestAccess = isGuest();
             const accessDenied = document.getElementById('accessDenied');
             const galleryContent = document.getElementById('galleryContent');
             
-            if (adminAccess) {
+            if (adminAccess) {                             //  adminAccess || guestAccess
                 accessDenied.style.display = 'none';
                 galleryContent.style.display = 'block';
                 generateGallery();
