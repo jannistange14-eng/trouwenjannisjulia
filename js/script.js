@@ -202,3 +202,38 @@ const adminDeleteAllBtn = document.getElementById('adminDeleteAllBtn');
 if (adminDeleteAllBtn) {
     adminDeleteAllBtn.addEventListener('click', deleteAllMessages);
 }
+// ===== COUNTDOWN TIMER =====
+// Pas deze datum aan naar jouw trouwdatum (YYYY-MM-DD)
+const weddingDate = new Date("2026-09-12T12:00:00").getTime();
+
+function updateCountdown() {
+    const now = new Date().getTime();
+    const difference = weddingDate - now;
+
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+    const daysElement = document.getElementById("days");
+    const hoursElement = document.getElementById("hours");
+    const minutesElement = document.getElementById("minutes");
+    const secondsElement = document.getElementById("seconds");
+
+    if (daysElement) daysElement.textContent = days < 0 ? 0 : days;
+    if (hoursElement) hoursElement.textContent = hours < 0 ? 0 : String(hours).padStart(2, '0');
+    if (minutesElement) minutesElement.textContent = minutes < 0 ? 0 : String(minutes).padStart(2, '0');
+    if (secondsElement) secondsElement.textContent = seconds < 0 ? 0 : String(seconds).padStart(2, '0');
+
+    // Als de bruiloft voorbij is
+    if (difference < 0) {
+        const countdownTitle = document.querySelector(".countdown-title");
+        if (countdownTitle) {
+            countdownTitle.textContent = "Bedankt voor je aanwezigheid!";
+        }
+    }
+}
+
+// Update countdown om de seconde
+updateCountdown();
+setInterval(updateCountdown, 1000);
