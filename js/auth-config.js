@@ -48,11 +48,4 @@ const GUEST_ACCOUNTS = [
 	{ username: "E&N", password: "5735SG", displayName: "Ed & Natasja" },
 	{ username: "B&Y&L", password: "5741DK", displayName: "Bo & Yorick & Leane" },
 	
-	
-
-
-
-
-
-
 ];
