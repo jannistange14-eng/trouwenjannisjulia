@@ -11,12 +11,19 @@
     padding: 0;
 }
 
+html {
+    overscroll-behavior: none;
+}
+
 body {
     font-family: "Times New Roman", Times, serif;
     background-color: var(--bg-blue);
     color: #333;
     line-height: 1.6;
     height: 800px;
+    overflow-x: hidden;
+    overscroll-behavior-y: none;
+    touch-action: manipulation;
 }
 
 /* Layout */

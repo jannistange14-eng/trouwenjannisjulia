@@ -13,11 +13,18 @@
     box-sizing: border-box;
 }
 
+html {
+    overscroll-behavior: none;
+}
+
 body {
     font-family: 'Georgia', serif;
     background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-blue) 100%);
     min-height: 100vh;
     padding: 20px;
+    overflow-x: hidden;
+    overscroll-behavior-y: none;
+    touch-action: manipulation;
 }
 
 /* Navigation */

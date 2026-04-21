@@ -13,12 +13,19 @@
     padding: 0;
 }
 
+html {
+    overscroll-behavior: none;
+}
+
 body {
     font-family: "Times New Roman", Times, serif;
     background-color: var(--bg-blue);
     color: #333;
     line-height: 1.6;
     height: 800px;
+    overflow-x: hidden;
+    overscroll-behavior-y: none;
+    touch-action: manipulation;
 }
 
 /* ------------------------Layout ---------------------------------*/
@@ -142,7 +149,6 @@ section h4{
   width: clamp(500px, 30vw, 400px);
   height: auto;
   opacity: 0.5;
-  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.2));
 }
 
 
@@ -154,8 +160,7 @@ section h4{
   overflow: hidden;      /* snijdt de image af */
   border: 5rem, rgb(105, 70, 30);
   /* border-radius: 40px;   vorm (afgeronde hoeken) */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.61);
-
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 .image_3 {
   width: 500px;          /* containerbreedte */
@@ -164,8 +169,7 @@ section h4{
   overflow: hidden;      /* snijdt de image af */
   border: 5rem, rgb(105, 70, 30);
   /* border-radius: 40px;   vorm (afgeronde hoeken) */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.61);
-
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .image_4 {
@@ -175,8 +179,7 @@ section h4{
   overflow: hidden;      /* snijdt de image af */
   border: 5rem, rgb(105, 70, 30);
   /* border-radius: 40px;   vorm (afgeronde hoeken) */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.61);
-
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 .image_5 {
   width: 490px;          /* containerbreedte */
@@ -184,9 +187,9 @@ section h4{
   position: relative;
   overflow: hidden;      /* snijdt de image af */
   border: 5rem, rgb(105, 70, 30);
+ 
   /* border-radius: 40px;   vorm (afgeronde hoeken) */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.61);
-
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 /* 11111111111111 Story block - tekst links, image rechts */
@@ -194,10 +197,9 @@ section h4{
   max-width: 1200px;
   margin: 120px auto;
   padding: 30px;
-  background-color:  var(--bg-bluetone);
+  background-color: var(--bg-blue);
   border-radius: 10px;
   position: relative;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.61);
 }
 
 .story-text-1 {
@@ -215,7 +217,8 @@ section h4{
   height: 400px;
   object-fit: cover;
   border-radius: 8px;
-  
+  animation: float 3s ease-in-out infinite;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 1.2);
 }
 
 .wave-text-1 {
@@ -229,10 +232,9 @@ section h4{
   max-width: 1200px;
   margin: 120px auto;
   padding: 30px;
-  background-color: var(--bg-bluetone);
+  background-color: var(--bg-blue);
   border-radius: 10px;
   position: relative;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.61);
 }
 
 .story-text-2 {
@@ -250,7 +252,7 @@ section h4{
   height: 800px;
   object-fit: cover;
   border-radius: 8px;
-  
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 1.2);
 }
 
 .wave-text-2 {
@@ -263,10 +265,9 @@ section h4{
   max-width: 1200px;
   margin: 120px auto;
   padding: 30px;
-  background-color: var(--bg-bluetone);
+  background-color: var(--bg-blue);
   border-radius: 10px;
   position: relative;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.61);
 }
 
 .story-text-3 {
@@ -284,7 +285,7 @@ section h4{
   height: 400px;
   object-fit: cover;
   border-radius: 8px;
-  
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 1.2);
 }
 
 .wave-text-3 {
@@ -297,10 +298,9 @@ section h4{
   max-width: 1200px;
   margin: 120px auto;
   padding: 30px;
-  background-color: var(--bg-bluetone);
+  background-color: var(--bg-blue);
   border-radius: 10px;
   position: relative;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.61);
 }
 
 .story-text-4 {
@@ -318,7 +318,7 @@ section h4{
   height: 400px;
   object-fit: cover;
   border-radius: 8px;
-  
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 1.2);
 }
 
 .wave-text-4 {
@@ -333,10 +333,9 @@ section h4{
   width: 100%;
   margin: 150px auto;
   padding: 30px;
-  background-color: var(--bg-bluetone);
+  background-color: var(--bg-blue);
   border-radius: 10px;
   position: relative;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.61);
 }
 
 .story-text-5 {
@@ -354,6 +353,7 @@ section h4{
   height: flex;
   object-fit: cover;
   border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 1.2);
 }
 .story-image-5-1 {
   max-width: 250px;
@@ -361,6 +361,7 @@ section h4{
   height: flex;
   object-fit: cover;
   border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 1.2);
 }
 
 .image-group {
@@ -382,10 +383,9 @@ section h4{
   max-width: 1200px;
   margin: 150px auto;
   padding: 30px;
-  background-color: var(--bg-bluetone);
+  background-color: var(--bg-blue);
   border-radius: 10px;
   position: relative;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.61);
 }
 
 .story-text-6 {
@@ -403,6 +403,8 @@ section h4{
   height: 400px;
   object-fit: cover;
   border-radius: 8px;
+  animation: float 3s ease-in-out infinite;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 1.2);
 }
 
 .wave-text-6 {
