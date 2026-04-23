@@ -17,8 +17,15 @@ html {
     overscroll-behavior: none;
 }
 
+body,
+button,
+input,
+textarea,
+select {
+    font-family: 'Playfair Display', serif;
+}
+
 body {
-    font-family: "Times New Roman", Times, serif;
     background-color: var(--bg-blue);
     color: #333;
     line-height: 1.6;
@@ -37,7 +44,6 @@ body::before {
     top: 0;
     width: 150px;
     height: 100%;
-    background: url('../images/Images_ons_verhaal/ROdelijn.png') repeat-y center/contain;
     pointer-events: none;
     z-index: 0;
 }
@@ -49,7 +55,6 @@ body::after {
     top: 0;
     width: 150px;
     height: 100%;
-    background: url('../images/Images_ons_verhaal/ROOdelijn.png') repeat-y center/contain;
     pointer-events: none;
     z-index: 0;
 }
@@ -73,7 +78,7 @@ header {
 
 .header-content h1 {
     color: var(--bg-light);
-    font-size: clamp(32px, 6vw, 60px);
+    font-size: clamp(108px, 14vw, 140px);
     margin: 0;
 }
 
@@ -145,15 +150,14 @@ section  {
 
 section h2 {
     margin: -20px 0px 20px 0px;
-
-    font-size: 45px;
+    font-size: 80px;
     color: var(--bg-dark);
     
 }
 section h3 {
-    margin-top: -30px;
-    margin-bottom: 20px;
-    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 80px;
+    font-size: 40px;
     color: var(--bg-dark);
     
 }
@@ -170,7 +174,8 @@ section h4{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px auto 10px;
+  /* margin: 10px auto 10px; */
+  background: var(--bg-blue);
 }
 
 .story-divider img {
@@ -232,21 +237,19 @@ section h4{
 
 .story-text-1 {
   flex: 1;
-  max-width: 500px;
   padding: 20px;
-  text-align: left;
-  font-size: 18px;
+  text-align: center;
+  font-size: 40px;
   color: var(--bg-dark);
   line-height: 1.8;
 }
 
 .story-image-1 {
-  width: 500px;
-  height: 400px;
+  width: flex;
+  height: flex;
   object-fit: cover;
-  border-radius: 8px;
-  animation: float 3s ease-in-out infinite;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 1.2);
+  border-radius: 24px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 1.6);
 }
 
 .wave-text-1 {
@@ -267,19 +270,19 @@ section h4{
 
 .story-text-2 {
   flex: 1;
-  max-width: 500px;
-  padding: 20px;
-  text-align: left;
-  font-size: 18px;
+  max-width: flex;
+  padding: 30px 60px 30px;
+  text-align: center;
+  font-size: 40px;
   color: var(--bg-dark);
   line-height: 1.8;
 }
 
 .story-image-2 {
-  width: 500px;
-  height: 800px;
+  width: flex;
+  height: flex;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 32px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 1.2);
 }
 
@@ -300,17 +303,17 @@ section h4{
 
 .story-text-3 {
   flex: 1;
-  max-width: 500px;
+  max-width: flex;
   padding: 20px;
-  text-align: left;
-  font-size: 18px;
+  text-align: Center;
+  font-size: 40px;
   color: var(--bg-dark);
   line-height: 1.8;
 }
 
 .story-image-3 {
-  width: 500px;
-  height: 400px;
+  width: flex;
+  height: flex;
   object-fit: cover;
   border-radius: 8px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 1.2);
@@ -333,17 +336,17 @@ section h4{
 
 .story-text-4 {
   flex: 1;
-  max-width: 500px;
+  max-width: flex;
   padding: 20px;
-  text-align: left;
-  font-size: 18px;
+  text-align: center;
+  font-size: 40px;
   color: var(--bg-dark);
   line-height: 1.8;
 }
 
 .story-image-4 {
-  width: 500px;
-  height: 400px;
+  width: flex;
+  height: flex;
   object-fit: cover;
   border-radius: 8px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 1.2);
@@ -441,7 +444,38 @@ section h4{
   gap: 6px;
 }
 
+/* 77777777777777 Story block - tekst links, image rechts */
+.story-block-7 {
+  max-width: 1200px;
+  margin: 150px auto;
+  padding: 30px;
+  background-color: var(--bg-blue);
+  border-radius: 10px;
+  position: relative;
+}
 
+.story-text-7 {
+  flex: 1;
+  max-width: 500px;
+  padding: 20px;
+  text-align: left;
+  font-size: 18px;
+  color: var(--bg-dark);
+  line-height: 1.8;
+}
+
+.story-image-7 {
+  width: flex;
+  height: flex;
+  object-fit: cover;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 1.2);
+}
+
+.wave-text-7 {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
 
  /* -------------------------------footer----------------------------- */
 section p {
@@ -508,10 +542,10 @@ footer {
     padding: 0px;
   }
   section h2 {
-    font-size: 28px;
+    font-size: 80px;
   }
   section h3 {
-    font-size: 22px;
+    font-size: 30px;
   }
   .story-block-1,
   .story-block-2,
@@ -530,7 +564,7 @@ footer {
   .story-text-6 {
     max-width: 100%;
     padding: 12px;
-    font-size: 16px;
+    font-size: 40px;
   }
   .story-image-1,
   .story-image-2,
@@ -601,7 +635,7 @@ footer {
   .story-text-3,
   .story-text-4,
   .story-text-5 {
-    font-size: 14px;
+    font-size: 40px;
     padding: 10px;
   }
   .story-block-1::after,
@@ -662,7 +696,7 @@ footer {
   .story-text-3,
   .story-text-4,
   .story-text-5 {
-    font-size: 17px;
+    font-size: 40px;
   }
   .story-image-1,
   .story-image-2,
@@ -699,7 +733,7 @@ footer {
   }
 }
 
-@media (min-width: 1201px) {
+/* @media (min-width: 1201px) {
   header {
     padding: 70px 24px 140px;
   }
@@ -714,4 +748,4 @@ footer {
     font-size: 30px;
   }
 }
-
+ */
