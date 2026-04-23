@@ -15,8 +15,15 @@ html {
     overscroll-behavior: none;
 }
 
+body,
+button,
+input,
+textarea,
+select {
+    font-family: 'Playfair Display', serif;
+}
+
 body {
-    font-family: "Times New Roman", Times, serif;
     background-color: var(--bg-blue);
     color: #333;
     line-height: 1.6;
@@ -43,7 +50,7 @@ header {
 
 .header-content h1 {
     color: var(--bg-light);
-    font-size: clamp(32px, 6vw, 60px);
+    font-size: clamp(108px, 14vw, 140px);
     margin: 0;
 }
 
@@ -116,7 +123,7 @@ section h2 {
     margin-bottom: 10px;
     font-size: 36px;
     color: var(--bg-dark);
-    position: calc(center);
+    text-align: center;
 }
 
 section p {
@@ -125,17 +132,135 @@ section p {
     color: var(--bg-dark);
 }
 
-footer {
-    text-align: center;
-    padding: 40px 0px;
-    background-color: var(--bg-dark);
-    color: var(--bg-light);
-    min-height: fit-content;
-    position: absolute; 
-    bottom: 0px;
-    width: 100%;
+.planning-grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    margin-top: 30px;
 }
 
+.planning-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
+}
+
+.planning-stage {
+    display: inline-block;
+    margin-bottom: 16px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background-color: var(--bg-dark);
+    color: var(--bg-light);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.planning-card h3 {
+    margin-bottom: 14px;
+    font-size: 1.3rem;
+    color: var(--bg-dark);
+}
+
+.planning-card ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.planning-card li {
+    padding-left: 16px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.planning-card li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--bg-dark);
+}
+
+.planning-actions {
+    margin-top: 40px;
+}
+
+.timeline-list {
+    display: grid;
+    gap: 16px;
+}
+
+.timeline-item {
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    padding: 20px 22px;
+}
+
+.timeline-date {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: var(--bg-dark);
+}
+
+.schedule-grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    margin-top: 30px;
+}
+
+.schedule-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 28px 24px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+.schedule-time {
+    display: wrap;
+    margin-bottom: 16px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background-color: var(--bg-dark);
+    color: var(--bg-light);
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.schedule-card h3 {
+    margin-bottom: 14px;
+    font-size: 1.4rem;
+    color: var(--bg-dark);
+}
+
+.schedule-card p {
+    margin-bottom: 10px;
+}
+
+.schedule-location {
+    font-weight: bold;
+    color: var(--bg-green);
+}
+
+@media (max-width: 600px) {
+    .planning-grid {
+        gap: 18px;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--bg-dark);
+    color: var(--bg-light);
+    position: absolute;
+    width: 100%;
+}
 /* Responsive */
 @media (max-width: 600px) {
     header {

@@ -51,7 +51,7 @@ header {
 
 .header-content h1 {
     color: var(--bg-light);
-    font-size: clamp(40px, 6vw, 70px);
+    font-size: clamp(108px, 14vw, 140px);
     position: relative;
     z-index: 2;
 }

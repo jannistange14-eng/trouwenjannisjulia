@@ -74,6 +74,7 @@ header {
     background-color: var(--bg-dark);
     padding: 60px 20px 120px;
     text-align: center;
+    z-index: 0;
 }
 
 .header-content h1 {
@@ -282,8 +283,7 @@ section h4{
   width: flex;
   height: flex;
   object-fit: cover;
-  border-radius: 32px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 1.2);
+ 
 }
 
 .wave-text-2 {
@@ -316,7 +316,6 @@ section h4{
   height: flex;
   object-fit: cover;
   border-radius: 8px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 1.2);
 }
 
 .wave-text-3 {
@@ -468,7 +467,6 @@ section h4{
   width: flex;
   height: flex;
   object-fit: cover;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 1.2);
 }
 
 .wave-text-7 {
