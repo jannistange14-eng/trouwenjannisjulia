@@ -151,6 +151,112 @@ section p {
     color: #333;
 }
 
+.feedback-section {
+    max-width: 900px;
+    margin-top: 40px;
+    padding: 24px;
+    background-color: rgba(255, 255, 255, 0.35);
+    border-radius: 16px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+.feedback-section h2 {
+    font-size: 32px;
+    color: var(--bg-dark);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.feedback-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.feedback-tab {
+    border: 1px solid rgba(97, 15, 12, 0.5);
+    background-color: rgba(107, 117, 52, 0.85);
+    color: var(--bg-light);
+    padding: 12px 22px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.feedback-tab:hover,
+.feedback-tab.active {
+    background-color: var(--bg-light);
+    color: var(--bg-dark);
+    border-color: var(--bg-dark);
+}
+
+.feedback-input {
+    display: grid;
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.feedback-input textarea {
+    width: 100%;
+    min-height: 220px;
+    padding: 26px;
+    border-radius: 24px;
+    border: none;
+    background-color: rgba(97, 15, 12, 0.92);
+    color: var(--bg-light);
+    font-size: 18px;
+    line-height: 1.6;
+    resize: vertical;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.feedback-input textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.feedback-submit {
+    width: fit-content;
+    padding: 16px 32px;
+    border-radius: 14px;
+    border: none;
+    background-color: var(--bg-green);
+    color: var(--bg-light);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    align-self: start;
+}
+
+.feedback-list {
+    display: grid;
+    gap: 18px;
+}
+
+.feedback-item {
+    background-color: rgba(212, 175, 55, 0.18);
+    padding: 22px 24px;
+    border-radius: 18px;
+    border: 1px solid rgba(212, 175, 55, 0.38);
+}
+
+.feedback-author {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--bg-dark);
+    margin-bottom: 12px;
+}
+
+.feedback-item p {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--bg-dark);
+}
+
 /* -------------------------------Footer----------------------------- */
 footer {
     text-align: center;

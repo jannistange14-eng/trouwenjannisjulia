@@ -1,14 +1,13 @@
 :root {
-    --bg-light: rgb(244, 231, 166);
+    --bg-light: rgb(242,235,204);
     --bg-dark: rgb(97, 15, 12);
     --bg-blue: rgb(181, 199, 225);
-    --bg-bluetone : rgba(194, 210, 233, 0.925);
     --bg-green: rgb(107, 117, 52);
     --bg-greentrans: rgba(107, 117, 52, 0.644);
 }
 
 * {
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     margin: 0;
     padding: 0;
 }
@@ -17,8 +16,16 @@ html {
     overscroll-behavior: none;
 }
 
+body,
+body,
+button {
+    font-family: 'Playfair Display', serif;
+}
+
 body {
-    font-family: "Times New Roman", Times, serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: var(--bg-blue);
     color: #333;
     line-height: 1.6;
@@ -31,29 +38,38 @@ body {
 
 .container {
     width: 100%;
-    max-width: none; /* vul de volledige breedte */
-    margin: 0;
+    margin: 0 auto;
     padding: 0; /* geen interne marge zodat de container de pagina volledig uitvult */
-    min-height: 100vh; /* vul minimaal de volledige viewporthoogte */
-    display: block;
+    min-height: 800vh; /* vul minimaal de volledige viewporthoogte */
+    display: flex;
+    flex-direction: column;
+    position: relative;
 }
 
 /* ===== HEADER ===== */
 
 header {
-    position: relative;
     background-color: var(--bg-dark);
-    padding: 60px 20px 240px;
+    padding: 60px 20px 60px;
     text-align: center;
     overflow: visible;
     
 }
 
-.header-content h1 {
+.header-content {
     color: var(--bg-light);
-    font-size: clamp(108px, 14vw, 140px);
     position: relative;
     z-index: 2;
+}
+
+.header-content-welkom {
+    position: relative;
+    top: -175px; /* pas deze waarde aan om de positie verticaal te veranderen */
+    content: center;
+    right: -10%;
+    transform: translateX(-10%);
+    max-width: 1100px;
+
 }
 
 /* ===== FOTO block ===== */
@@ -80,56 +96,19 @@ header {
     transform: translate(-50%, 0) translateX(210%);
 }
 
+.block-top  {
+    block-size: 350px;
+
+}
+
 .block  {
-    block-size: 1200px;
+    block-size: 500px;
 
 }
+.block-1  {
+    block-size: 300px;
 
-.header-photo-2-en-5 {
-    position: relative;
-    left: 50%;
-    transform: none;
-    transform-origin: center center;
-    /* responsive size: min 140px, scales with viewport, max 280px */
-    max-width: flex;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-    
 }
-/* Position each photo relative to the center and offset outward */
-
-.photo-2 {                                                       /* logo */
-    top: -52%;
-    transform: translate(-50%, 0) translateX(0%);
-     width: 200px;
-     position: relative;
-    left: 46%;
-    transform: none;
-    transform-origin: center center;
-    max-width: flex;
- 
-    
-}
-
-.photo-3 {
-    top: 10%;
-    transform: translate(-10%, 0) translateX(-400%);
-     width: 250px;
-}
-
-.photo-4 {
-    top: 35%;
-    transform: translate(-50%, 0) translateX(-220%);
-     width: 180px;
-} 
-
-.photo-5 {
-    top: 60%;
-    transform: translate(-10%, 0) translateX(-700%);
-     width: 180px;
-} 
-
-
 /* ===== NAV ===== */
 
 nav {
@@ -156,8 +135,6 @@ nav a {
 
 main {
     padding: 40px 20px;
-    padding-top: auto;
-    height: auto;
     background-color: var(--bg-blue);
 }
 
@@ -180,66 +157,89 @@ section p {
     color: var(--bg-dark);
     font-weight: normal;
     line-height: 0.8;
-} 
-/* ===== FORM ===== */
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;  
-    color: var(--bg-blue);
-    
 }
 
-.message-options {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px 20px;
-    color: var(--bg-dark);
-    font-size: 24px;
-}
-
-.message-option {
+.story-section {
+    margin: 0 auto 60px;
+    content: center;
     background: transparent;
+}
+
+.story-section h2 {
+    font-size: clamp(90px, 12vw, 100px);
+    margin-bottom: 24px;
     color: var(--bg-dark);
-    border: 2px solid var(--bg-green);
-    border-radius: 16px;
-    padding: 12px 16px;
-    font-size: 22px;
-    font-weight: bold;
-    cursor: pointer;
+    text-align: center;
 }
 
-.message-option.active {
-    background: var(--bg-green);
-    color: var(--bg-light);
-}
-
-.message-status {
-    margin-top: 12px;
-    font-size: 22px;
-    color: var(--bg-dark);
-}
-
-
-input, textarea {
-    padding: 20px;
-    font-size: 32px;
-    font-weight: normal;
-    background-color: var(--bg-dark);
-    border-radius: 16px;
-    border: none;
-} 
-
-#messageForm input,
-#messageForm textarea {
-    color: var(--bg-blue);
+.story-block {
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
     
 }
 
-#messageForm input::placeholder,
-#messageForm textarea::placeholder {
-    color: var(--bg-blue);
+.story-copy {
+    max-width: 1000px;
+    flex: 1;
+    text-align: center;
+}
+
+.story-copy h3 {
+    font-size: clamp(60px, 8vw, 70px);
+    margin-bottom: 12px;
+    color: var(--bg-dark);
+}
+
+.story-date {
+    display: block;
+    align-items: center;
+    margin-bottom: 16px;
+    font-size: clamp(40px, 6vw, 50px);
+    color: var(--bg-green);
+    font-weight: 700;
+}
+
+.story-image {
+    max-width: 100%;
+    object-fit: cover;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.story-divider {
+    display: flex;
+    justify-content: center;
+    margin: 24px 0;
+}
+
+.story-divider img {
+    width: clamp(280px, 40vw, 820px);
+    opacity: 0.45;
+}
+
+@media (max-width: 900px) {
+    .story-block,
+    .story-block--reverse {
+        flex-direction: column;
+    }
+
+    .story-copy {
+        text-align: center;
+    }
+
+    .story-copy h3 {
+        font-size: 28px;
+    }
+
+    .story-copy p {
+        font-size: 18px;
+    }
+
+    .story-image {
+        width: 100%;
+        max-width: 620px;
+    }
 }
 
 button {
@@ -254,21 +254,20 @@ button {
 } 
 
 button.section {
-    width: 300px;
-    position: relative;
-    top: -140px;
-    left: 55rem;
+    width: auto;
+    display: inline-flex;
+    justify-content: center;
+    margin-top: 20px;
     background-color: transparent;
     color: var(--bg-light);
     font-size: 30px;
     font-weight: bold;
-    border: 0.25rem, solid, var(--bg-greentrans);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.479);
+    border: 2px solid var(--bg-greentrans);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
     border-radius: 16px;
-    padding: 20px;
+    padding: 20px 28px;
     cursor: pointer;
-
-} 
+}
 
 button:hover {
     opacity: 0.85;
@@ -285,72 +284,6 @@ button.top {
     padding: 10px;
     cursor: pointer;
 } 
-
-/* ===== BERICHTEN ===== */
-
-#messages {
-    margin-top: 30px;
-    }
-
-.message {
-    background: var(--bg-light);
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    position: relative;
-    transition: background-color 0.18s ease, box-shadow 0.18s ease, transform 0.12s ease;
-}
-
-/* Visuele stijl voor verwijderbare berichten */
-.message.deletable {
-    background: var(--bg-light); /* licht rode achtergrond om te waarschuwen */
-    border: none;
-    border-radius: 16px;
-    box-shadow: 0 6px 18px rgba(192,57,43,0.06);
-}
-
-.message strong {
-    color: var(--bg-blue);
-    font-size: 20px;
-}
-
-.message p {
-    color: var(--bg-blue);
-    font-size: 40px;
-}
-
-/* Delete button for messages */
-.delete-btn {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    background: transparent;
-    color: var(--bg-green);
-    border: 2px solid var(--bg-green);
-    padding: 6px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 700;
-    transition: background-color 0.12s ease, color 0.12s ease, transform 0.08s ease;
-}
-
-/* Make button more prominent on deletable messages */
-.message.deletable .delete-btn {
-    background: transparent;
-    color: var(--bg-green);
-    border-color: var(--bg-green);
-}
-
-.delete-btn:hover { transform: translateY(-1px); opacity: 0.95; }
-
-/* Label voor eigen berichten */
-.message .you { 
-    font-size: 12px; 
-    color: var(--bg-light); 
-    margin-left: 8px; 
-    font-weight: normal; 
-}
 
 /* Admin controls */
 .admin-controls { 
@@ -391,12 +324,22 @@ button.top {
 /* ===== FOOTER ===== */
 
 footer {
+    position: relative;
+    
+    width: 100%;
     text-align: center;
-    padding: 20px;
     background-color: var(--bg-dark);
     color: var(--bg-light);
-    position: absolute;
-    width: 100%;
+    padding: 20px 0;
+    z-index: 9999;
+}
+
+footer p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--bg-light);
 }
 
 /* ===== RESPONSIVE ===== */
@@ -467,59 +410,6 @@ footer {
         border-radius: 12px;
     }
 
-    .photo-2 {
-        position: relative;
-        left: 0px;
-        top: 0px;
-        transform: none;
-        width: 90%;
-        max-width: 300px;
-        margin: 0 auto;
-        display: block;
-        /* box-shadow: 0 8px 20px rgba(0,0,0,0.2); */
-        border-radius: 12px;
-    }
-
-    /* Kleinere foto's met instelbare posities */
-    .photo-3 {
-        position: relative;
-        left: 200px;
-        top: 0px;
-        transform: translateX(0%);
-        width: 60%;
-        max-width: 200px;
-        margin: 0 auto;
-        display: block;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        border-radius: 12px;
-    }
-
-    .photo-4 {
-        position: relative;
-        left: 40px;
-        top: 0px;
-        transform: translateX(0%);
-        width: 40%;
-        max-width: 180px;
-        margin: 0 auto;
-        display: block;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        border-radius: 12px;
-    }
-
-    .photo-5 {
-        position: relative;
-        left: 0px;
-        top: 0px;
-        transform: translateX(0%);
-        width: 40%;
-        max-width: 180px;
-        margin: 0 auto;
-        display: block;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        border-radius: 12px;
-    }
-
     nav {
         position: relative;
         left: auto;
@@ -580,27 +470,9 @@ footer {
         font-size: 18px;
     }
 
-    form {
-        gap: 8px;
-    }
-
-    input, textarea {
-        padding: 10px;
-        font-size: 14px;
-    }
-
     button {
         font-size: 16px;
         padding: 12px;
-    }
-
-    .message-option {
-        font-size: 14px;
-        padding: 8px 10px;
-    }
-
-    .message p {
-        font-size: 14px;
     }
 }
 
@@ -670,59 +542,8 @@ footer {
         border-radius: 12px;
     }
 
-.photo-2{
-    position: relative;
-    left: 0px;
-    top: 0px;
-    transform: none;
-    width: 85%;
-    max-width: 400px;
-    margin: 0 auto;
-    display: block;
-    /* box-shadow: 0 8px 20px rgba(0,0,0,0.2); */
-    border-radius: 12px;
-}
 
     /* Kleinere foto's met instelbare posities */
-    .photo-3 {
-        position: relative;
-        left: 50px;
-        top: 0px;
-        transform: translateX(0%);
-        width: 65%;
-        max-width: 250px;
-        margin: 0 auto;
-        display: block;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        border-radius: 12px;
-    }
-
-    .photo-4 {
-        position: relative;
-        left: -90px;
-        top: 0px;
-        transform: translateX(0%);
-        width: 40%;
-        max-width: 220px;
-        margin: 20px auto;
-        display: block;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        border-radius: 12px;
-    }
-
-    .photo-5 {
-        position: relative;
-        left: 50px;
-        top: 0px;
-        transform: translateX(0%);
-        width: 40%;
-        max-width: 220px;
-        margin: 0 auto;
-        display: block;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        border-radius: 12px;
-    }
-
     nav {
         position: relative;
         left: auto;
@@ -783,27 +604,14 @@ footer {
         font-size: 22px;
     }
 
-    form {
-        gap: 10px;
-    }
-
-    input, textarea {
-        padding: 14px;
-        font-size: 18px;
-    }
-
     button {
         font-size: 20px;
         padding: 15px;
     }
 
-    .message-option {
-        font-size: 16px;
-        padding: 10px 14px;
-    }
-
-    .message p {
-        font-size: 18px;
+    button {
+        font-size: 20px;
+        padding: 15px;
     }
 }
 
@@ -847,29 +655,8 @@ footer {
         font-size: clamp(40px, 5.5vw, 55px);
     }
 
-    .header-photo,
-    .header-photo-2-en-5 {
+    .header-photo {
         width: clamp(130px, 14vw, 220px);
-    }
-
-    .photo-2 {
-        top: -25%;
-        width: 180px;
-    }
-
-    .photo-3 {
-        top: 12%;
-        width: 200px;
-    }
-
-    .photo-4 {
-        top: 38%;
-        width: 160px;
-    }
-
-    .photo-5 {
-        top: 62%;
-        width: 160px;
     }
 
     nav {
@@ -911,18 +698,9 @@ footer {
         font-size: 26px;
     }
 
-    input, textarea {
-        font-size: 24px;
-        padding: 18px;
-    }
-
     button {
         font-size: 24px;
         padding: 18px;
-    }
-
-    .message-option {
-        font-size: 20px;
     }
 }
 
@@ -970,26 +748,6 @@ footer {
         width: clamp(150px, 15vw, 260px);
     }
 
-    .photo-2 {
-        top: -28%;
-        width: 190px;
-    }
-
-    .photo-3 {
-        top: 11%;
-        width: 230px;
-    }
-
-    .photo-4 {
-        top: 36%;
-        width: 170px;
-    }
-
-    .photo-5 {
-        top: 61%;
-        width: 170px;
-    }
-
     nav {
         left: 55px;
         gap: 10px;
@@ -1029,18 +787,9 @@ footer {
         font-size: 28px;
     }
 
-    input, textarea {
-        font-size: 28px;
-        padding: 19px;
-    }
-
     button {
         font-size: 26px;
         padding: 19px;
-    }
-
-    .message-option {
-        font-size: 20px;
     }
 }
 
@@ -1080,25 +829,29 @@ footer {
 
 /* ===== COUNTDOWN TIMER ===== */
 .countdown-container {
-    background-color: var(--bg-light);
-    padding: 30px 20px;
+    position: absolute; /* positioneerbaar blok, verander hier de plaatsing */
+    top: 1700px; /* regel voor verticale hoogte: hoger=naar beneden, lager=naar boven */
+    left: 50%; /* centrale horizontale uitlijning */
+    transform: translateX(-50%); /* schuift het blok precies in het midden */
+    max-width: 1100px; /* pas deze regel aan voor bredere of smallere container */
+    background-color: transparent;
     text-align: center;
-    border-bottom: 3px solid var(--bg-dark);
+    border-bottom: none;
 }
 
 .countdown-title {
-    font-size: clamp(24px, 4vw, 32px);
+    font-size: clamp(32px, 5vw, 48px); /* maak de kop groter of kleiner */
     color: var(--bg-dark);
-    margin-bottom: 20px;
+    margin-bottom: 24px; /* afstand onder de titel */
     font-weight: bold;
 }
 
 .countdown {
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    justify-content: center; /* links/rechts uitlijning van de blokken */
+    gap: 28px; /* ruimte tussen de tijd-blokken */
     flex-wrap: wrap;
-    max-width: 900px;
+    max-width: 1000px; /* breedte van de rij met tijd-blokken */
     margin: 0 auto;
 }
 
@@ -1107,23 +860,24 @@ footer {
     flex-direction: column;
     align-items: center;
     background-color: var(--bg-dark);
-    padding: 20px 25px;
-    border-radius: 8px;
-    min-width: 80px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    padding: 28px 32px; /* vergroot dit voor meer binnenruimte */
+    border-radius: 12px;
+    min-width: 110px; /* breedte van elk blok */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .countdown-number {
-    font-size: clamp(28px, 6vw, 48px);
+    font-size: clamp(36px, 8vw, 72px); /* hoofdnummergrootte aanpassen */
     font-weight: bold;
     color: var(--bg-light);
     line-height: 1;
 }
 
 .countdown-label {
-    font-size: clamp(12px, 2vw, 14px);
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(14px, 2.5vw, 18px); /* tekst onder het nummer aanpassen */
     color: var(--bg-light);
-    margin-top: 8px;
+    margin-top: 10px; /* ruimte tussen nummer en label */
     text-transform: uppercase;
     letter-spacing: 1px;
 }
