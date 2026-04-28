@@ -92,5 +92,13 @@
     </div>
     <script src="../js/auth-config.js"></script>
     <script src="../js/auth-ui.js"></script>
+    <script>
+        document.querySelectorAll('.feedback-tab').forEach((button) => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.feedback-tab').forEach((btn) => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>

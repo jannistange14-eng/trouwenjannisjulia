@@ -129,6 +129,7 @@ section p {
 /* FAQ specifieke styling */
 .faq-section {
     max-width: 900px;
+    background: transparent;
 }
 
 .faq-item {
@@ -143,21 +144,25 @@ section p {
     color: var(--bg-dark);
      font-size: 40px;
     margin-bottom: 10px;
+    font-family: 'Playfair Display', serif;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.25);
 }
 
 .faq-item p {
     font-size: 18px;
     line-height: 1.6;
     color: #333;
+    font-family: "Montserrat", sans-serif;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.0);
 }
 
 .feedback-section {
     max-width: 900px;
     margin-top: 40px;
     padding: 24px;
-    background-color: rgba(255, 255, 255, 0.35);
+    background-color: transparent;
     border-radius: 16px;
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+    
 }
 
 .feedback-section h2 {
@@ -177,8 +182,8 @@ section p {
 
 .feedback-tab {
     border: 1px solid rgba(97, 15, 12, 0.5);
-    background-color: rgba(107, 117, 52, 0.85);
-    color: var(--bg-light);
+    background-color: var(--bg-light);
+    color: var(--bg-dark);
     padding: 12px 22px;
     border-radius: 999px;
     cursor: pointer;
@@ -186,11 +191,14 @@ section p {
     transition: all 0.2s ease;
 }
 
-.feedback-tab:hover,
+.feedback-tab:hover {
+    background-color: rgba(107, 117, 52, 0.15);
+}
+
 .feedback-tab.active {
-    background-color: var(--bg-light);
-    color: var(--bg-dark);
-    border-color: var(--bg-dark);
+    background-color: var(--bg-green);
+    color: var(--bg-light);
+    border-color: var(--bg-green);
 }
 
 .feedback-input {
@@ -205,12 +213,10 @@ section p {
     padding: 26px;
     border-radius: 24px;
     border: none;
-    background-color: rgba(97, 15, 12, 0.92);
-    color: var(--bg-light);
+    background-color: rgba(172, 194, 223, 0.85); 
     font-size: 18px;
     line-height: 1.6;
     resize: vertical;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 .feedback-input textarea::placeholder {

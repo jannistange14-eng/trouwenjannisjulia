@@ -170,6 +170,7 @@ section p {
     margin-bottom: 24px;
     color: var(--bg-dark);
     text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .story-block {
@@ -187,8 +188,10 @@ section p {
 
 .story-copy h3 {
     font-size: clamp(60px, 8vw, 70px);
+    font-family: 'Playfair Display', serif;
     margin-bottom: 12px;
     color: var(--bg-dark);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.25);
 }
 
 .story-date {
@@ -196,6 +199,7 @@ section p {
     align-items: center;
     margin-bottom: 16px;
     font-size: clamp(40px, 6vw, 50px);
+     text-shadow: 2px 2px 4px rgba(0,0,0,0.25);
     color: var(--bg-green);
     font-weight: 700;
 }

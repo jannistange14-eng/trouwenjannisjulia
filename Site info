@@ -1,10 +1,13 @@
 //Wachtwoord hoofd admin: JJ.tange2024
 //wachtwoord guest: Champagne Toren
 
-
-
-
-// 
+Kop texten
+//Kop 1 = font-size: clamp(90px, 12vw, 100px);
+//				font-family: 'Playfair Display', serif;
+//Kop 2 = font-size: clamp(60px, 8vw, 70px);
+//				font-family: "Montserrat", sans-serif;
+//kop 3 = font-size: clamp(30px, 6vw, 400px);
+//				font-family: "Montserrat", sans-serif;
 
 
 //uploaden in git hub 
