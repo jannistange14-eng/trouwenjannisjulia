@@ -236,6 +236,24 @@ section p {
     align-self: start;
 }
 
+/* Specifieke styling voor de beheer-knoppen in de lijst */
+.delete-btn.feedback-submit {
+    background-color: #a94442; /* Subtiele rode kleur voor verwijderen */
+    font-size: 14px;           /* Iets kleiner voor in de lijst */
+    padding: 8px 16px;        /* Compactere vulling */
+    margin-top: 10px;
+    display: inline-block;
+    width: auto;              /* Voorkomt dat de knop de hele breedte pakt */
+}
+
+.edit-btn.feedback-submit {
+    background-color: var(--bg-green); 
+    font-size: 14px;
+    padding: 8px 16px;
+    margin-right: 10px;
+    width: auto;
+}
+
 .feedback-list {
     display: grid;
     gap: 18px;
@@ -352,6 +370,3 @@ footer {
         font-size: 14px;
     }
 }
-
-
-

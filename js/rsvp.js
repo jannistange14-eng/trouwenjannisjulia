@@ -18,6 +18,9 @@ function getOwnerKey() {
 }
 
 function isOwner(rsvp) {
+    // De admin is 'eigenaar' van alle RSVP's en mag alles beheren
+    if (isAdmin()) return true;
+
     const ownerKey = getOwnerKey();
     if (!ownerKey) return false;
     if (rsvp.ownerKey) return rsvp.ownerKey === ownerKey;
