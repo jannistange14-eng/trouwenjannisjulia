@@ -88,7 +88,10 @@ function setMessageStatus(text) {
 }
 
 async function sendPrivateMessage(payload) {
-    const response = await fetch('api/private-message.php', {
+    // Bepaal het juiste pad naar de API, afhankelijk van of we in de root of in de /pages/ map zitten
+    const apiPath = window.location.pathname.includes('/pages/') ? '../api/private-message.php' : 'api/private-message.php';
+    
+    const response = await fetch(apiPath, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)

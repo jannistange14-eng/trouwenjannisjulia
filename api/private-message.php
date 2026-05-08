@@ -47,7 +47,7 @@ $smtpHost = 'smtp.strato.com';
 $smtpPort = 465;
 $smtpSecure = 'ssl';
 $smtpUser = 'info@jannisjuliatrouwen.nl';
-$smtpPass = 'Keeshond18!';
+$smtpPass = 'YOUR_SMTP_PASSWORD'; // Gebruik een environment variabele of beveiligd config bestand
 
 $from = $smtpUser;
 $body = "Naam: {$name}\n\nBericht:\n{$message}\n";
