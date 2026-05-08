@@ -76,6 +76,11 @@ function adminLogout() {
 }
 
 function guestLogin() {
+    if (typeof GUEST_ACCOUNTS === 'undefined') {
+        alert('Configuratiebestand niet gevonden. Controleer of js/auth-config.js correct is geüpload.');
+        return;
+    }
+
     const username = prompt('Voer guest gebruikersnaam in:');
     if (!username) {
         alert('Geen gebruikersnaam ingevuld.');

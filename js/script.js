@@ -108,7 +108,7 @@ function setMessageStatus(text) { // Helper functie om tekstberichten onder het 
 
 async function sendPrivateMessage(payload) { // Functie die contact maakt met de server
     // Bepaal het juiste pad naar de API, afhankelijk van of we in de root of in de /pages/ map zitten
-    const apiPath = window.location.pathname.includes('/pages/') ? '../api/private-message.php' : 'api/private-message.php'; // Pad-correctie
+    const apiPath = window.location.href.includes('/pages/') ? '../api/private-message.php' : 'api/private-message.php'; // Gebruik href voor meer zekerheid op servers
     
     const response = await fetch(apiPath, { // Start de verbinding met het PHP script
         method: 'POST', // Verstuur gegevens via POST
