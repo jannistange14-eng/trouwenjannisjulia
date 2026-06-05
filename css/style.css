@@ -53,23 +53,22 @@ header {
     padding: 60px 20px 60px;
     text-align: center;
     overflow: visible;
+     z-index: 2;
     
 }
 
 .header-content {
     color: var(--bg-light);
     position: relative;
-    z-index: 2;
 }
 
 .header-content-welkom {
     position: relative;
-    top: -5%;
-    left: 5%;
-    width: 50%;
-    z-index: 10;
+    top: 1050px;
+    right: -10%;
+    width: min(45vw, 600px);
+    max-width: 600px;
     padding: 0;
-   
 }
 
 .hero-block {
@@ -94,9 +93,8 @@ header {
 }
 
 .Frontpage-image img {
-    width: 100%;
+    width: 130%;
     height: 100%;
-    z-index: 0;
     object-fit: cover;
     display: block;
 }
@@ -121,11 +119,12 @@ header {
     transform: translate(-50%, 0) translateX(210%);
 }
 
-.block-top  {
+.block-top {
     position: relative;
-    z-index: -5;
-    block-size: 150px;
-
+    z-index: 0;
+    width: 100%;
+    min-height: 150px;
+    background-color: transparent;
 }
 
 .block  {

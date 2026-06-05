@@ -262,55 +262,7 @@ function updateCountdown() { // De functie die elke seconde de klok ververst
     }
 }
 
-// Drag support for floating Welkom image
-function initWelcomeDrag() {
-    const welcome = document.querySelector('.header-content-welkom');
-    if (!welcome) return;
 
-    let isDragging = false;
-    let startX = 0;
-    let startY = 0;
-    let originLeft = 0;
-    let originTop = 0;
-
-    function onPointerDown(event) {
-        if (event.button !== undefined && event.button !== 0) return;
-        event.preventDefault();
-        const rect = welcome.getBoundingClientRect();
-        startX = event.clientX;
-        startY = event.clientY;
-        originLeft = rect.left;
-        originTop = rect.top;
-        welcome.style.transform = 'none';
-        welcome.style.left = `${originLeft}px`;
-        welcome.style.top = `${originTop}px`;
-        welcome.style.position = 'fixed';
-        welcome.style.cursor = 'grabbing';
-        isDragging = true;
-        welcome.setPointerCapture?.(event.pointerId);
-    }
-
-    function onPointerMove(event) {
-        if (!isDragging) return;
-        const dx = event.clientX - startX;
-        const dy = event.clientY - startY;
-        welcome.style.left = `${originLeft + dx}px`;
-        welcome.style.top = `${originTop + dy}px`;
-    }
-
-    function onPointerUp(event) {
-        if (!isDragging) return;
-        isDragging = false;
-        welcome.style.cursor = 'grab';
-        welcome.releasePointerCapture?.(event.pointerId);
-    }
-
-    welcome.addEventListener('pointerdown', onPointerDown);
-    window.addEventListener('pointermove', onPointerMove);
-    window.addEventListener('pointerup', onPointerUp);
-}
-
-initWelcomeDrag();
 
 // Update countdown om de seconde
 updateCountdown(); // Start de klok direct bij het openen van de pagina
