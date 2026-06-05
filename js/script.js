@@ -2,6 +2,7 @@ const form = document.getElementById("messageForm"); // Selecteert het HTML-form
 const messagesDiv = document.getElementById("messages"); // Selecteert de container waarin berichten worden getoond
 const messageStatus = document.getElementById("messageStatus"); // Selecteert het element voor statusmeldingen (bijv. "Verzonden")
 const messageTypeInput = document.getElementById("messageType"); // Selecteert het verborgen veld voor berichttype (publiek/privé)
+const messageRecipientInput = document.getElementById("messageRecipient"); // Geeft het e-mailadres waar privé-berichten naartoe gaan
 const messageTypeButtons = document.querySelectorAll(".message-option"); // Selecteert de knoppen om te wisselen tussen publiek en privé
 
 // Zorg voor een persistent client-id om eigenaarschap te bewaren
@@ -69,7 +70,7 @@ if (form) { // Als het formulier aanwezig is op deze pagina:
         if (messageType === 'private') { // Als het bericht 'privé' is:
             try {
                 setMessageStatus('Bezig met verzenden...'); // Toon voortgang
-                await sendPrivateMessage({ name: name, message: message }); // Roep de functie aan om de mail te versturen
+                await sendPrivateMessage({ name: name, message: message, recipient: getPrivateMessageRecipient() }); // Roep de functie aan om de mail te versturen
                 setMessageStatus('Je persoonlijke reactie is verzonden.'); // Succesmelding
                 form.reset(); // Maak het tekstveld leeg
             } catch (err) {
@@ -99,6 +100,11 @@ if (form) { // Als het formulier aanwezig is op deze pagina:
 function getSelectedMessageType() { // Helper functie om berichttype uit te lezen
     if (!messageTypeInput) return 'public'; // Standaard is publiek als het veld ontbreekt
     return messageTypeInput.value || 'public'; // Geef de waarde terug (public of private)
+}
+
+function getPrivateMessageRecipient() {
+    if (!messageRecipientInput) return 'info@jannisjuliatrouwen.nl';
+    return messageRecipientInput.value.trim() || 'info@jannisjuliatrouwen.nl';
 }
 
 function setMessageStatus(text) { // Helper functie om tekstberichten onder het formulier te tonen
@@ -255,6 +261,56 @@ function updateCountdown() { // De functie die elke seconde de klok ververst
         }
     }
 }
+
+// Drag support for floating Welkom image
+function initWelcomeDrag() {
+    const welcome = document.querySelector('.header-content-welkom');
+    if (!welcome) return;
+
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+    let originLeft = 0;
+    let originTop = 0;
+
+    function onPointerDown(event) {
+        if (event.button !== undefined && event.button !== 0) return;
+        event.preventDefault();
+        const rect = welcome.getBoundingClientRect();
+        startX = event.clientX;
+        startY = event.clientY;
+        originLeft = rect.left;
+        originTop = rect.top;
+        welcome.style.transform = 'none';
+        welcome.style.left = `${originLeft}px`;
+        welcome.style.top = `${originTop}px`;
+        welcome.style.position = 'fixed';
+        welcome.style.cursor = 'grabbing';
+        isDragging = true;
+        welcome.setPointerCapture?.(event.pointerId);
+    }
+
+    function onPointerMove(event) {
+        if (!isDragging) return;
+        const dx = event.clientX - startX;
+        const dy = event.clientY - startY;
+        welcome.style.left = `${originLeft + dx}px`;
+        welcome.style.top = `${originTop + dy}px`;
+    }
+
+    function onPointerUp(event) {
+        if (!isDragging) return;
+        isDragging = false;
+        welcome.style.cursor = 'grab';
+        welcome.releasePointerCapture?.(event.pointerId);
+    }
+
+    welcome.addEventListener('pointerdown', onPointerDown);
+    window.addEventListener('pointermove', onPointerMove);
+    window.addEventListener('pointerup', onPointerUp);
+}
+
+initWelcomeDrag();
 
 // Update countdown om de seconde
 updateCountdown(); // Start de klok direct bij het openen van de pagina

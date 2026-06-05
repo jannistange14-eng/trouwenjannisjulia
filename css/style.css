@@ -64,16 +64,42 @@ header {
 
 .header-content-welkom {
     position: relative;
-    top: -175px; /* pas deze waarde aan om de positie verticaal te veranderen */
-    content: center;
-    right: -10%;
-    transform: translateX(-10%);
-    max-width: 1100px;
-
+    top: -5%;
+    left: 5%;
+    width: 50%;
+    z-index: 10;
+    padding: 0;
+   
 }
 
-/* ===== FOTO block ===== */
+.hero-block {
+    position: relative;
+    width: 100%;
+    min-height: 60vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-dark);
+    z-index: 1;
+}
 
+.Frontpage-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: var(--frontpage-opacity, 0.35);
+}
+
+.Frontpage-image img {
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    object-fit: cover;
+    display: block;
+}
 
 /* ===== FOTO'S ===== */
 
@@ -90,14 +116,15 @@ header {
     
 }
 
-.photo-1 {   
-                            
+.photo-1 {
     top: 12%;
     transform: translate(-50%, 0) translateX(210%);
 }
 
 .block-top  {
-    block-size: 350px;
+    position: relative;
+    z-index: -5;
+    block-size: 150px;
 
 }
 
@@ -134,7 +161,7 @@ nav a {
 /* ===== CONTENT ===== */
 
 main {
-    padding: 40px 20px;
+    z-index: 0;
     background-color: var(--bg-blue);
 }
 
@@ -221,29 +248,59 @@ section p {
     width: clamp(280px, 40vw, 820px);
     opacity: 0.45;
 }
+/* ===== COUNTDOWN TIMER ===== */
+.countdown-container {
+    position: relative; /* positioneerbaar blok, verander hier de plaatsing */
+    top: 10px; /* regel voor verticale hoogte: hoger=naar beneden, lager=naar boven */
+    left: 50%; /* centrale horizontale uitlijning */
+    transform: translateX(-50%); /* schuift het blok precies in het midden */
+    max-width: 1100px; /* pas deze regel aan voor bredere of smallere container */
+    background-color: transparent;
+    text-align: center;
+    border-bottom: none;
+}
 
-@media (max-width: 900px) {
-    .story-block,
-    .story-block--reverse {
-        flex-direction: column;
-    }
+.countdown-title {
+    font-size: clamp(32px, 5vw, 48px); /* maak de kop groter of kleiner */
+    color: var(--bg-dark);
+    margin-bottom: 24px; /* afstand onder de titel */
+    font-weight: bold;
+}
 
-    .story-copy {
-        text-align: center;
-    }
+.countdown {
+    display: flex;
+    justify-content: center; /* links/rechts uitlijning van de blokken */
+    gap: 28px; /* ruimte tussen de tijd-blokken */
+    flex-wrap: wrap;
+    max-width: 1000px; /* breedte van de rij met tijd-blokken */
+    margin: 0 auto;
+}
 
-    .story-copy h3 {
-        font-size: 28px;
-    }
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--bg-dark);
+    padding: 28px 32px; /* vergroot dit voor meer binnenruimte */
+    border-radius: 12px;
+    min-width: 110px; /* breedte van elk blok */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
 
-    .story-copy p {
-        font-size: 18px;
-    }
+.countdown-number {
+    font-size: clamp(36px, 8vw, 72px); /* hoofdnummergrootte aanpassen */
+    font-weight: bold;
+    color: var(--bg-light);
+    line-height: 1;
+}
 
-    .story-image {
-        width: 100%;
-        max-width: 620px;
-    }
+.countdown-label {
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(14px, 2.5vw, 18px); /* tekst onder het nummer aanpassen */
+    color: var(--bg-light);
+    margin-top: 10px; /* ruimte tussen nummer en label */
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 button {
@@ -345,6 +402,32 @@ footer p {
     letter-spacing: 0.04em;
     color: var(--bg-light);
 }
+
+
+@media (max-width: 900px) {
+    .story-block,
+    .story-block--reverse {
+        flex-direction: column;
+    }
+
+    .story-copy {
+        text-align: center;
+    }
+
+    .story-copy h3 {
+        font-size: 28px;
+    }
+
+    .story-copy p {
+        font-size: 18px;
+    }
+
+    .story-image {
+        width: 100%;
+        max-width: 620px;
+    }
+}
+
 
 /* ===== RESPONSIVE ===== */
 
@@ -831,60 +914,6 @@ footer p {
     }
 }
 
-/* ===== COUNTDOWN TIMER ===== */
-.countdown-container {
-    position: absolute; /* positioneerbaar blok, verander hier de plaatsing */
-    top: 1700px; /* regel voor verticale hoogte: hoger=naar beneden, lager=naar boven */
-    left: 50%; /* centrale horizontale uitlijning */
-    transform: translateX(-50%); /* schuift het blok precies in het midden */
-    max-width: 1100px; /* pas deze regel aan voor bredere of smallere container */
-    background-color: transparent;
-    text-align: center;
-    border-bottom: none;
-}
-
-.countdown-title {
-    font-size: clamp(32px, 5vw, 48px); /* maak de kop groter of kleiner */
-    color: var(--bg-dark);
-    margin-bottom: 24px; /* afstand onder de titel */
-    font-weight: bold;
-}
-
-.countdown {
-    display: flex;
-    justify-content: center; /* links/rechts uitlijning van de blokken */
-    gap: 28px; /* ruimte tussen de tijd-blokken */
-    flex-wrap: wrap;
-    max-width: 1000px; /* breedte van de rij met tijd-blokken */
-    margin: 0 auto;
-}
-
-.countdown-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--bg-dark);
-    padding: 28px 32px; /* vergroot dit voor meer binnenruimte */
-    border-radius: 12px;
-    min-width: 110px; /* breedte van elk blok */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-}
-
-.countdown-number {
-    font-size: clamp(36px, 8vw, 72px); /* hoofdnummergrootte aanpassen */
-    font-weight: bold;
-    color: var(--bg-light);
-    line-height: 1;
-}
-
-.countdown-label {
-    font-family: "Montserrat", sans-serif;
-    font-size: clamp(14px, 2.5vw, 18px); /* tekst onder het nummer aanpassen */
-    color: var(--bg-light);
-    margin-top: 10px; /* ruimte tussen nummer en label */
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
 
 @media (max-width: 768px) {
     .countdown {

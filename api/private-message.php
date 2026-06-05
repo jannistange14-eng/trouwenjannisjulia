@@ -26,6 +26,7 @@ if (!is_array($data)) {
 // 2) Velden schoonmaken
 $name = trim($data['name'] ?? '');
 $message = trim($data['message'] ?? '');
+$recipient = trim($data['recipient'] ?? '');
 
 // 3) Verplicht veld controle
 if ($name === '' || $message === '') {
@@ -39,14 +40,18 @@ $name = substr($name, 0, 80);
 $message = substr($message, 0, 2000);
 
 // 5) Ontvanger + onderwerp fix
-$to = 'info@jannisjuliatrouwen.nl';
+$allowedRecipients = ['info@jannisjuliagaantrouwen.nl'];
+if (!in_array($recipient, $allowedRecipients, true)) {
+    $recipient = 'info@jannisjuliagaantrouwen.nl';
+}
+$to = $recipient;
 $subject = 'Nieuwe persoonlijke reactie';
 
 // 6) SMTP-configuratie (hardcoded in script, beter via environment variabelen)
-$smtpHost = 'smtp.strato.com';
+$smtpHost = 'smtp.transip.email';
 $smtpPort = 465;
 $smtpSecure = 'ssl';
-$smtpUser = 'info@jannisjuliatrouwen.nl';
+$smtpUser = 'info@jannisjuliagaantrouwen.nl';
 $smtpPass = 'YOUR_SMTP_PASSWORD'; // Gebruik een environment variabele of beveiligd config bestand
 
 $from = $smtpUser;
