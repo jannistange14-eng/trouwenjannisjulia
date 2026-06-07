@@ -161,7 +161,7 @@ nav a {
 
 main {
     z-index: 0;
-    background-color: var(--bg-blue);
+    background-color: var(--bg-light);
 }
 
 section {
