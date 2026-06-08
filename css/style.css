@@ -54,17 +54,20 @@ header {
     text-align: center;
     overflow: visible;
      z-index: 2;
+     max-height: 70vh;
+     position: relative;
     
 }
 
 .header-content {
     color: var(--bg-light);
     position: relative;
+    top: -450px;
 }
 
 .header-content-welkom {
     position: relative;
-    top: 1050px;
+    top: 500px;
     right: -10%;
     width: min(45vw, 600px);
     max-width: 600px;
@@ -132,7 +135,7 @@ header {
 
 }
 .block-1  {
-    block-size: 300px;
+    block-size: 200px;
 
 }
 /* ===== NAV ===== */
@@ -187,12 +190,12 @@ section p {
 
 .story-section {
     margin: 0 auto 60px;
-    content: center;
+    justify-content: space-around;
     background: transparent;
 }
 
 .story-section h2 {
-    font-size: clamp(90px, 12vw, 100px);
+    font-size: clamp(80px, 8vw, 80px);
     margin-bottom: 24px;
     color: var(--bg-dark);
     text-align: center;
@@ -202,18 +205,21 @@ section p {
 .story-block {
     flex-wrap: wrap;
     gap: 30px;
-    align-items: center;
+    justify-content: center;
+    display: grid;
     
 }
 
 .story-copy {
     max-width: 1000px;
-    flex: 1;
     text-align: center;
+    display: grid;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .story-copy h3 {
-    font-size: clamp(60px, 8vw, 70px);
+    font-size: clamp(50px, 6vw, 50px);
     font-family: 'Playfair Display', serif;
     margin-bottom: 12px;
     color: var(--bg-dark);
@@ -221,10 +227,10 @@ section p {
 }
 
 .story-date {
-    display: block;
+    display: grid;
     align-items: center;
     margin-bottom: 16px;
-    font-size: clamp(40px, 6vw, 50px);
+    font-size: clamp(40px, 6vw, 30px);
      text-shadow: 2px 2px 4px rgba(0,0,0,0.25);
     color: var(--bg-green);
     font-weight: 700;
@@ -232,25 +238,43 @@ section p {
 
 .story-image {
     max-width: 100%;
-    object-fit: cover;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.story-divider {
+    width: clamp(560px, 20vw, 820px);
     display: flex;
     justify-content: center;
+   
+}
+
+.story-image-1 {
+    max-width: 100%;
+    width: 560px;
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+   
+}
+
+.story-image-2 {
+    max-width: 100%;
+    width: 560px;
+    display: flex;
+    justify-content: center;
+    padding: 0px 0px 0px 210px;
+   
+}
+.story-divider {
+    display: flex;
+    justify-content: space-around;
     margin: 24px 0;
 }
 
 .story-divider img {
-    width: clamp(280px, 40vw, 820px);
+    width: clamp(260px, 20vw, 820px);
     opacity: 0.45;
 }
 /* ===== COUNTDOWN TIMER ===== */
 .countdown-container {
     position: relative; /* positioneerbaar blok, verander hier de plaatsing */
-    top: 10px; /* regel voor verticale hoogte: hoger=naar beneden, lager=naar boven */
+    top: 20px; /* regel voor verticale hoogte: hoger=naar beneden, lager=naar boven */
     left: 50%; /* centrale horizontale uitlijning */
     transform: translateX(-50%); /* schuift het blok precies in het midden */
     max-width: 1100px; /* pas deze regel aan voor bredere of smallere container */
@@ -402,526 +426,4 @@ footer p {
     color: var(--bg-light);
 }
 
-
-@media (max-width: 900px) {
-    .story-block,
-    .story-block--reverse {
-        flex-direction: column;
-    }
-
-    .story-copy {
-        text-align: center;
-    }
-
-    .story-copy h3 {
-        font-size: 28px;
-    }
-
-    .story-copy p {
-        font-size: 18px;
-    }
-
-    .story-image {
-        width: 100%;
-        max-width: 620px;
-    }
-}
-
-
-/* ===== RESPONSIVE ===== */
-
-/* ===== Extra Klein: < 350px ===== */
-@media (max-width: 350px) {
-    header {
-        padding: 30px 15px 30px;
-    }
-
-    .countdown-container {
-        padding: 12px 8px;
-    }
-
-    .countdown-title {
-        font-size: 16px;
-        margin-bottom: 10px;
-    }
-
-    .countdown {
-        gap: 4px;
-        flex-wrap: nowrap;
-    }
-
-    .countdown-item {
-        padding: 6px 8px;
-        min-width: 40px;
-        flex: 1;
-    }
-
-    .countdown-number {
-        font-size: 16px;
-    }
-
-    .countdown-label {
-        font-size: 4px;
-    }
-
-    .block {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        padding: 30px 15px;
-        background-color: var(--bg-blue);
-        height: auto;
-        margin-bottom: 40px;
-    }
-
-    .header-content h1 {
-        position: static;
-        font-size: clamp(24px, 9vw, 34px);
-        margin-top: 10px;
-        text-align: center;
-    }
-
-    /* Individuele foto's met instelbare posities */
-    .photo-1 {
-        position: relative;
-        left: 0px;
-        top: 0px;
-        transform: none;
-        width: 90%;
-        max-width: 300px;
-        margin: 0 auto;
-        display: block;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        border-radius: 12px;
-    }
-
-    nav {
-        position: relative;
-        left: auto;
-        top: auto;
-        justify-content: center;
-        margin: 10px auto 15px;
-        gap: 6px;
-        flex-wrap: wrap;
-    }
-
-    nav a {
-        font-size: 14px;
-        padding: 6px 8px;
-    }
-
-    .admin-controls {
-        position: static;
-        justify-content: center;
-        margin: 10px auto;
-        padding: 8px;
-        gap: 6px;
-        flex-wrap: wrap;
-    }
-
-    .admin-btn {
-        font-size: 11px;
-        padding: 4px 6px;
-    }
-
-    #adminStatus {
-        font-size: 10px;
-    }
-
-    main {
-        padding: 20px 15px;
-    }
-
-    section {
-        margin-bottom: 40px;
-    }
-
-    section h2 {
-        font-size: 24px;
-        margin-bottom: 8px;
-    }
-
-    section p {
-        font-size: 16px;
-        line-height: 1.4;
-    }
-
-    button.section {
-        position: static;
-        width: 100%;
-        transform: none;
-        margin-top: 10px;
-        padding: 15px;
-        font-size: 18px;
-    }
-
-    button {
-        font-size: 16px;
-        padding: 12px;
-    }
-}
-
-/* ===== Klein: 351px - 800px ===== */
-@media (min-width: 351px) and (max-width: 800px) {
-    header {
-        padding: 40px 20px 40px;
-    }
-
-    .countdown-container {
-        padding: 15px 10px;
-    }
-
-    .countdown-title {
-        font-size: 18px;
-        margin-bottom: 12px;
-    }
-
-    .countdown {
-        gap: 5px;
-        flex-wrap: nowrap;
-    }
-
-    .countdown-item {
-        padding: 8px 10px;
-        min-width: 55px;
-        flex: 1;
-    }
-
-    .countdown-number {
-        font-size: 18px;
-    }
-
-    .countdown-label {
-        font-size: 9px;
-    }
-
-    .block {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 25px;
-        padding: 40px 20px;
-        background-color: var(--bg-blue);
-        height: auto;
-        margin-bottom: 50px;
-    }
-
-    .header-content h1 {
-        position: static;
-        font-size: clamp(28px, 7vw, 42px);
-        margin-top: 10px;
-        text-align: center;
-    }
-
-/* Individuele foto's met instelbare posities */
-    .photo-1 {
-        position: relative;
-        left: 0px;
-        top: 0px;
-        transform: none;
-        width: 85%;
-        max-width: 400px;
-        margin: 0 auto;
-        display: block;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        border-radius: 12px;
-    }
-
-
-    /* Kleinere foto's met instelbare posities */
-    nav {
-        position: relative;
-        left: auto;
-        top: auto;
-        justify-content: center;
-        margin: 15px auto 20px;
-        gap: 8px;
-        flex-wrap: wrap;
-    }
-
-    nav a {
-        font-size: 15px;
-        padding: 8px 12px;
-    }
-
-    .admin-controls {
-        top: 15px;
-        right: 15px;
-        padding: 8px 12px;
-        gap: 8px;
-    }
-
-    .admin-btn {
-        font-size: 12px;
-        padding: 5px 8px;
-    }
-
-    #adminStatus {
-        font-size: 11px;
-    }
-
-    main {
-        padding: 30px 20px;
-    }
-
-    section {
-        margin-bottom: 50px;
-    }
-
-    section h2 {
-        font-size: 32px;
-        margin-bottom: 10px;
-    }
-
-    section p {
-        font-size: 20px;
-        line-height: 1.2;
-    }
-
-    button.section {
-        position: static;
-        width: 90%;
-        max-width: 350px;
-        transform: none;
-        margin: 15px auto 0;
-        display: block;
-        padding: 18px;
-        font-size: 22px;
-    }
-
-    button {
-        font-size: 20px;
-        padding: 15px;
-    }
-
-    button {
-        font-size: 20px;
-        padding: 15px;
-    }
-}
-
-/* ===== Medium: 800px - 1000px ===== */
-@media (min-width: 800px) and (max-width: 1000px) {
-    header {
-        padding: 50px 30px 150px;
-    }
-
-    .countdown-container {
-        padding: 28px 20px;
-    }
-
-    .countdown-title {
-        font-size: 26px;
-        margin-bottom: 20px;
-    }
-
-    .countdown {
-        gap: 15px;
-    }
-
-    .countdown-item {
-        padding: 18px 22px;
-        min-width: 75px;
-    }
-
-    .countdown-number {
-        font-size: 32px;
-    }
-
-    .countdown-label {
-        font-size: 12px;
-    }
-
-    .block {
-        height: 1000px;
-    }
-
-    .header-content h1 {
-        font-size: clamp(40px, 5.5vw, 55px);
-    }
-
-    .header-photo {
-        width: clamp(130px, 14vw, 220px);
-    }
-
-    nav {
-        left: 50px;
-        gap: 8px;
-    }
-
-    nav a {
-        font-size: 15px;
-        padding: 7px 16px;
-    }
-
-    .admin-controls {
-        top: 15px;
-        right: 20px;
-    }
-
-    main {
-        padding: 35px 25px;
-    }
-
-    section {
-        max-width: 900px;
-        margin-bottom: 55px;
-    }
-
-    section h2 {
-        font-size: 48px;
-    }
-
-    section p {
-        font-size: 26px;
-    }
-
-    button.section {
-        width: 280px;
-        left: 50%;
-        transform: translateX(80%);
-        font-size: 26px;
-    }
-
-    button {
-        font-size: 24px;
-        padding: 18px;
-    }
-}
-
-/* ===== Medium-Large: 1000px - 1400px ===== */
-@media (min-width: 1000px) and (max-width: 1400px) {
-    header {
-        padding: 60px 20px 200px;
-    }
-
-    .countdown-container {
-        padding: 30px 25px;
-    }
-
-    .countdown-title {
-        font-size: 28px;
-        margin-bottom: 22px;
-    }
-
-    .countdown {
-        gap: 18px;
-    }
-
-    .countdown-item {
-        padding: 20px 24px;
-        min-width: 80px;
-    }
-
-    .countdown-number {
-        font-size: 38px;
-    }
-
-    .countdown-label {
-        font-size: 13px;
-    }
-
-    .block {
-        height: 1100px;
-    }
-
-    .header-content h1 {
-        font-size: clamp(50px, 5.5vw, 65px);
-    }
-
-    .header-photo {
-        width: clamp(150px, 15vw, 260px);
-    }
-
-    nav {
-        left: 55px;
-        gap: 10px;
-    }
-
-    nav a {
-        padding: 7px 18px;
-        font-size: 16px;
-    }
-
-    .admin-controls {
-        top: 18px;
-        right: 22px;
-    }
-
-    main {
-        padding: 40px 20px;
-    }
-
-    section {
-        max-width: 1000px;
-        margin-bottom: 60px;
-    }
-
-    section h2 {
-        font-size: 56px;
-    }
-
-    section p {
-        font-size: 28px;
-    }
-
-    button.section {
-        width: 290px;
-        left: 52%;
-        transform: translateX(90%);
-        font-size: 28px;
-    }
-
-    button {
-        font-size: 26px;
-        padding: 19px;
-    }
-}
-
-/* ===== Large: > 1400px ===== */
-@media (min-width: 1400px) {
-    .countdown-container {
-        padding: 32px 30px;
-    }
-
-    .countdown-title {
-        font-size: 32px;
-        margin-bottom: 25px;
-    }
-
-    .countdown {
-        gap: 20px;
-    }
-
-    .countdown-item {
-        padding: 22px 26px;
-        min-width: 85px;
-    }
-
-    .countdown-number {
-        font-size: 44px;
-    }
-
-    .countdown-label {
-        font-size: 14px;
-    }
-
-    .admin-controls {
-        top: 18px;
-        right: 24px;
-    }
-}
-
-
-@media (max-width: 768px) {
-    .countdown {
-        gap: 10px;
-    }
-    
-    .countdown-item {
-        padding: 15px 18px;
-        min-width: 70px;
-    }
-}
 
