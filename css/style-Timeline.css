@@ -1,7 +1,7 @@
 :root {
     --header-height: 100vh; /* Pas hier de hoogte van de header aan */
     --header-image-position: center 35%; /* Pas hier de header achtergrondpositie aan */
-    --bg-light: rgb(244, 231, 166);
+    --bg-light: rgb(242,235,204);
     --bg-dark: rgb(97, 15, 12);
     --bg-dark-Trans: rgba(97, 15, 12, 0.411);
     --bg-blue: rgb(181, 199, 225);
