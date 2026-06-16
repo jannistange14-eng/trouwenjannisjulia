@@ -21,22 +21,17 @@
 //Stappen om zelf te pushen 
 //Open je projectmap in de terminal:
 
-//cd "c:\Users\janni\OneDrive\Desktop\Wedding.site.CODE"
-//Kijk eerst wat er veranderd is:
+//cd "c:\Users\janni\OneDrive\Desktop\Wedding.site.CODE"   //Kijk eerst wat er veranderd is:
 
-//git status --short --branch
-//dit laat je zien welke bestanden zijn aangepast en op welke branch je zit
+//git status --short --branch                                                     //dit laat je zien welke bestanden zijn aangepast en op welke branch je zit
 //Controleer eventueel de remote en branch:
 
 //git remote -v
-//git branch --show-current
-//Voeg alle wijzigingen toe:
+//git branch --show-current                                                     //Voeg alle wijzigingen toe:
 
-//git add -A
-//Maak een commit met een duidelijke boodschap:
+//git add -A                                                                              //Maak een commit met een duidelijke boodschap:
 
-//git commit -m "Update wedding site files"
-//Verstuur de commit naar GitHub:
+//git commit -m "Update wedding site files"                          //Verstuur de commit naar GitHub:
 
 //git push origin main
 
@@ -51,13 +46,12 @@
 
 //letter type ons verhaal datums aanpassen
 
-
 //transIP
 //gb: jannis97
 //ww: Keeshond18!
 
 //transIP mail
-// info@jannisjuliagaantrouwen.nl
+//info@jannisjuliagaantrouwen.nl
 //Keeshhond19!
 
 
