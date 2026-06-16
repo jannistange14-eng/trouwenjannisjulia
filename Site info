@@ -1,7 +1,7 @@
 //Wachtwoord hoofd admin: JJ.tange2024
 //wachtwoord guest: Champagne Toren
 
-Kop texten
+//Kop texten
 //Kop 1 = font-size: clamp(90px, 12vw, 100px);
 //				font-family: 'Playfair Display', serif;
 //Kop 2 = font-size: clamp(60px, 8vw, 70px);
@@ -18,6 +18,28 @@ Kop texten
 //git commit -m "Beschrijving van je wijziging"       //invoeren in terminal
 //git push                                            //invoeren in terminal
 
+//Stappen om zelf te pushen 
+//Open je projectmap in de terminal:
+
+//cd "c:\Users\janni\OneDrive\Desktop\Wedding.site.CODE"
+//Kijk eerst wat er veranderd is:
+
+//git status --short --branch
+//dit laat je zien welke bestanden zijn aangepast en op welke branch je zit
+//Controleer eventueel de remote en branch:
+
+//git remote -v
+//git branch --show-current
+//Voeg alle wijzigingen toe:
+
+//git add -A
+//Maak een commit met een duidelijke boodschap:
+
+//git commit -m "Update wedding site files"
+//Verstuur de commit naar GitHub:
+
+//git push origin main
+
 //Of gebruik VS Code Source Control (Ctrl+Shift+G):
 
 //Klik op het '+' icoon bij gewijzigde bestanden
@@ -29,18 +51,14 @@ Kop texten
 
 //letter type ons verhaal datums aanpassen
 
-//div class="story-divider">
- //   img src="images/Images_ons_verhaal/Tattoo_jul.png" alt="Sierlijke scheiding">
-//div.>
 
 //transIP
-gb: jannis97
-ww: Keeshond18!
-
-//aanmelden systeem
-//mail gb: info@juliajannistrouwen.nl
 //gb: jannis97
-//ww:WJ0bavjv&e^9y4Ch
+//ww: Keeshond18!
+
+//transIP mail
+// info@jannisjuliagaantrouwen.nl
+//Keeshhond19!
 
 
 
