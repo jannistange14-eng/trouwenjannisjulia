@@ -29,7 +29,7 @@ html {
 }
 
 body {
-    background-color: var(--bg-light);
+    background-color: var(--bg-dark);
     background-size: cover;
     background-position: center;
     background-position-y: 40%;
@@ -274,4 +274,115 @@ footer p {
     font-weight: 500;
     letter-spacing: 0.04em;
     color: var(--bg-light);
+}
+
+/* ===== RESPONSIVE TIMELINE ===== */
+@media (max-width: 1024px) {
+    nav {
+        position: static;
+        top: auto;
+        left: auto;
+        justify-content: center;
+        margin: 0 auto 18px;
+        flex-wrap: wrap;
+    }
+
+    .admin-controls {
+        position: static;
+        margin: 0 auto 16px;
+        justify-content: center;
+        padding: 10px 0;
+        background-color: transparent;
+    }
+
+    .admin-btn {
+        font-size: 12px;
+        color: var(--bg-blue);
+        padding: 6px 10px;
+    }
+
+    #adminStatus {
+        font-size: 11px;
+        color: var(--bg-light);
+        margin-left: 4px;
+    }
+
+    header {
+        padding: 50px 16px 90px;
+        min-height: 70vh;
+        background-position: center 40%;
+    }
+
+    main {
+        padding: 28px 16px;
+    }
+
+    .planning-intro {
+        padding: 0 14px;
+    }
+
+    .planning-grid {
+        gap: 20px;
+    }
+
+    .planning-card,
+    .schedule-card,
+    .address-section {
+        padding: 22px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 40px 14px 70px;
+    }
+
+    .planning-intro h2 {
+        font-size: clamp(28px, 7vw, 50px);
+    }
+
+    .planning-grid {
+        gap: 18px;
+    }
+
+    .planning-card {
+        padding: 20px;
+    }
+
+    .timeline-item {
+        padding: 18px;
+    }
+
+    .map-container iframe {
+        height: 320px;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 34px 12px 60px;
+    }
+
+    .planning-intro {
+        padding: 0 12px;
+    }
+
+    section {
+        padding: 0 12px;
+    }
+
+    .planning-card,
+    .schedule-card,
+    .address-section {
+        padding: 18px;
+    }
+
+    .map-container iframe {
+        height: 280px;
+    }
+
+    nav a {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
 }

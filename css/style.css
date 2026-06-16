@@ -8,7 +8,7 @@
 }
 
 * {
-    /* box-sizing: border-box; */
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
@@ -27,7 +27,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: var(--bg-blue);
+    background-color: var(--bg-dark);
     color: #333;
     line-height: 1.6;
     overflow-x: hidden;
@@ -38,7 +38,7 @@ body {
 /* ===== LAYOUT ===== */
 
 .container {
-    margin: 0 auto;
+    width: 100%;
     padding: 0; /* geen interne marge zodat de container de pagina volledig uitvult */
     display: flex;
     flex-direction: column;
@@ -211,8 +211,8 @@ section p {
 .story-copy {
     max-width: 1000px;
     text-align: center;
-    display: grid;
-    align-items: center;
+   
+    
     justify-content: space-around;
 }
 
@@ -244,20 +244,15 @@ section p {
 }
 
 .story-image-1 {
-    max-width: 100%;
+   
     width: 560px;
-    display: flex;
-    justify-content: center;
-    padding: 50px;
+    padding: 60px 0px 60px 90px;
    
 }
 
 .story-image-2 {
-    max-width: 100%;
     width: 560px;
-    display: flex;
     justify-content: center;
-    padding: 0px 0px 0px 210px;
    
 }
 .story-divider {
@@ -274,15 +269,15 @@ section p {
 .countdown-container {
     position: relative; /* positioneerbaar blok, verander hier de plaatsing */
     top: 0px; /* regel voor verticale hoogte: hoger=naar beneden, lager=naar boven */
-    left: 50%; /* centrale horizontale uitlijning */
-    transform: translateX(-50%); /* schuift het blok precies in het midden */
-    width: 100vw; /* breedte over de volledige viewport */
+    left: 0; /* volledige breedte goed positioneren */
+    transform: none;
+    width: 100%;
     max-width: none; /* geen beperking op de lijnbreedte */
     background-color: transparent;
     text-align: center;
     padding: 100px 20px;
     box-sizing: border-box;
-       background-color: var(--bg-blue); 
+    background-color: var(--bg-blue);
 }
 
 .countdown-title {
@@ -383,7 +378,7 @@ button.top {
     z-index: 1000;
     background-color: transparent;
     padding: 10px 15px;
-    border-radius: 8px;
+    /* border-radius: 8px; */
     box-shadow: none;
 }
 
@@ -418,6 +413,315 @@ footer {
     color: var(--bg-light);
     padding: 20px 0;
     z-index: 9999;
+}
+
+/* ===== RESPONSIVE LAY-OUT ===== */
+@media (max-width: 1024px) {
+    body {
+        align-items: stretch;
+    }
+
+    header {
+        padding: 40px 20px 40px;
+        
+    }
+
+    nav {
+        position: relative;
+        justify-content: center;
+        left: auto;
+        top: auto;
+        margin: 8px auto 16px;
+        flex-wrap: wrap;
+
+    }
+
+    .admin-controls {
+         position: static;
+        margin: 0 auto 16px;
+        justify-content: center;
+        padding: 10px 0;
+        background-color: transparent;
+    }
+
+
+    .admin-btn {
+        font-size: 12px;
+        padding: 6px 10px;
+        color: var(--bg-blue);
+    }
+
+    #adminStatus {
+        font-size: 11px;
+        margin-left: 4px;
+        color: var(--bg-light);
+    }
+
+    .header-content,
+    .header-content-welkom {
+        position: static;
+        top: auto;
+        right: auto;
+        transform: none;
+        margin: 0 auto;
+        max-width: 100%;
+        width: min(100%, 900px);
+        padding: 0 14px;
+    }
+
+    .hero-block {
+        min-height: 50vh;
+    }
+
+    .Frontpage-image {
+        position: relative;
+        height: auto;
+        padding-top: 65%;
+    }
+
+    .Frontpage-image img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    section {
+        margin: 0 auto 40px;
+        padding: 0 16px;
+    }
+
+    section h2 {
+        font-size: clamp(42px, 8vw, 64px);
+    }
+
+    section p {
+        font-size: clamp(18px, 4vw, 24px);
+        line-height: 1.5;
+    }
+
+    .story-section {
+        margin-bottom: 40px;
+    }
+
+    .story-block {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 28px;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .story-copy {
+        max-width: 100%;
+        padding: 0 10px;
+        text-align: center;
+    }
+
+    .story-image,
+    .story-image-1,
+    .story-image-2 {
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    .story-image-2 {
+        padding: 0;
+    }
+
+   .countdown-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .countdown-item {
+        flex: 1 1 90px;
+        max-width: 180px;
+        margin: 0;
+    }
+
+    .countdown {
+        gap: 20px;
+    }
+
+       .countdown-number {
+        font-size: clamp(32px, 6vw, 60px);
+    }
+
+    .countdown-label {
+        font-size: clamp(14px, 3vw, 16px);
+    }
+
+    button {
+        font-size: clamp(18px, 3.5vw, 26px);
+        padding: 16px 18px;
+    }
+
+    nav a {
+        padding: 8px 14px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 30px 16px 30px;
+    }
+
+    .admin-controls {
+        position: static;
+        top: auto;
+        right: auto;
+        margin: 0 auto 16px;
+        justify-content: center;
+        padding: 10px 0;
+        background-color: transparent;
+        box-shadow: none;
+        flex-wrap: wrap;
+    }
+
+    .admin-controls .admin-btn {
+        width: auto;
+        flex: 0 1 auto;
+    }
+
+    .header-content,
+    .header-content-welkom {
+        position: static;
+        top: auto;
+        right: auto;
+        transform: none;
+        margin: 0 auto;
+        max-width: 100%;
+        width: min(100%, 900px);
+        padding: 0 14px;
+    }
+
+    .story-section h2 {
+        margin-top: 80px;
+        font-size: clamp(32px, 8vw, 52px);
+    }
+
+    .story-copy h3 {
+        font-size: clamp(30px, 7vw, 42px);
+    }
+
+    .story-date {
+        font-size: clamp(24px, 5vw, 28px);
+    }
+
+    .hero-block {
+        min-height: 0vh;
+    }
+
+    .Frontpage-image {
+        padding-top: 0%;
+    }
+
+    .countdown-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .countdown-item {
+        flex: 1 1 90px;
+        max-width: 120px;
+        margin: 0;
+    }
+
+    .story-block {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 24px 12px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header-content,
+    .header-content-welkom {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .header-content {
+        order: 1;
+    }
+
+    .header-content-welkom {
+        order: 2;
+        margin-top: 20px;
+    }
+
+    nav {
+        gap: 8px;
+    }
+
+    .container {
+        padding: 0px;
+    }
+
+    .story-section h2 {
+        font-size: clamp(28px, 10vw, 40px);
+        margin-top: 60px;
+    }
+
+    .story-copy h3 {
+        font-size: clamp(26px, 10vw, 34px);
+    }
+
+    .story-date {
+        font-size: clamp(20px, 6vw, 24px);
+    }
+
+    .story-block {
+        gap: 16px;
+    }
+
+    .countdown-container {
+        padding: 40px 12px;
+    }
+
+    .countdown {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+    }
+
+    .countdown-item {
+        min-width: 110px;
+        flex: 1 1 120px;
+        max-width: 140px;
+        width: auto;
+    }
+
+    .admin-controls {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .admin-controls .admin-btn {
+        width: auto;
+    }
+
+    button,
+    button.section {
+        width: 100%;
+    }
 }
 
 footer p {

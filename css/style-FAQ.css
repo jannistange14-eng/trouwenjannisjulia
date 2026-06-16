@@ -18,7 +18,7 @@ html {
 
 body {
     font-family: "Playfair Display", serif;
-    background-color: var(--bg-blue);
+    background-color: var(--bg-dark);
     color: #333;
     line-height: 1.6;
     overflow-x: hidden;
@@ -259,6 +259,7 @@ section p {
     gap: 18px;
 }
 
+
 .feedback-item {
     background-color: rgba(212, 175, 55, 0.18);
     padding: 22px 24px;
@@ -294,6 +295,82 @@ footer {
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+    nav {
+        position: static;
+        justify-content: center;
+        margin: 0 auto 18px;
+        flex-wrap: wrap;
+    }
+
+    .admin-controls {
+        position: static;
+        margin: 0 auto 20px;
+        justify-content: center;
+        padding: 10px 0;
+        background-color: transparent;
+    }
+
+    .admin-btn {
+        font-size: 12px;
+        padding: 6px 10px;
+        color: var(--bg-blue);
+    }
+
+    #adminStatus {
+        font-size: 11px;
+        margin-left: 4px;
+        color: var(--bg-light);
+    }
+
+    main {
+        padding: 30px 18px;
+    }
+
+    section {
+        max-width: 100%;
+        padding: 24px;
+        margin-bottom: 30px;
+    }
+
+    .faq-item,
+    .feedback-section {
+        padding: 18px;
+    }
+
+    .feedback-buttons {
+        justify-content: center;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+
+    section h2 {
+        font-size: 32px;
+    }
+
+    .faq-item {
+        padding: 16px;
+    }
+
+    .feedback-section {
+        padding: 16px;
+    }
+
+    .feedback-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .feedback-submit {
+        width: 100%;
+    }
+}
+
 @media (max-width: 600px) {
     header {
         padding: 40px 16px 80px;

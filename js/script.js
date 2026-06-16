@@ -103,8 +103,8 @@ function getSelectedMessageType() { // Helper functie om berichttype uit te leze
 }
 
 function getPrivateMessageRecipient() {
-    if (!messageRecipientInput) return 'info@jannisjuliatrouwen.nl';
-    return messageRecipientInput.value.trim() || 'info@jannisjuliatrouwen.nl';
+    if (!messageRecipientInput) return 'info@jannisjuliagaantrouwen.nl';
+    return messageRecipientInput.value.trim() || 'info@jannisjuliagaantrouwen.nl';
 }
 
 function setMessageStatus(text) { // Helper functie om tekstberichten onder het formulier te tonen

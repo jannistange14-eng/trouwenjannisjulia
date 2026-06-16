@@ -17,7 +17,7 @@ html {
 
 body {
     font-family: "Times New Roman", Times, serif;
-    background-color: var(--bg-blue);
+    background-color: var(--bg-dark);
     color: #333;
     line-height: 1.6;
     height: 800px;
@@ -256,10 +256,12 @@ footer {
     .admin-btn {
         font-size: 12px;
         padding: 6px 10px;
+        color: var(--bg-blue);
     }
     #adminStatus {
         font-size: 11px;
         margin-left: 4px;
+        color: var(--bg-light);
     }
     section {
         padding: 0 6px;
@@ -359,6 +361,42 @@ footer {
     }
     section p {
         font-size: 19px;
+    }
+}
+
+@media (max-width: 1024px) {
+    nav {
+        position: static;
+        top: auto;
+        left: auto;
+        justify-content: center;
+        margin: 0 auto 18px;
+        flex-wrap: wrap;
+    }
+
+    .admin-controls {
+        position: static;
+        margin: 0 auto 18px;
+        justify-content: center;
+        padding: 10px 0;
+        background-color: transparent;
+    }
+
+    section {
+        padding: 0 16px;
+    }
+
+    .map-container,
+    .route-description,
+    .address-section {
+        max-width: 100%;
+        width: 100%;
+        margin: 20px auto;
+        padding: 22px;
+    }
+
+    .map-container iframe {
+        height: 360px;
     }
 }
 
