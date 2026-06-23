@@ -137,7 +137,7 @@ section p {
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 8px;
-    text-align: left;
+    text-align: center;
 }
 
 .faq-item h3 {
@@ -171,6 +171,16 @@ section p {
     margin-bottom: 20px;
     text-align: center;
 }
+
+.feedback-section h3 {
+    font-size: 18px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--bg-dark);
+    margin-bottom: 20px;
+    text-align: center;
+
+}
+
 
 .feedback-buttons {
     display: flex;

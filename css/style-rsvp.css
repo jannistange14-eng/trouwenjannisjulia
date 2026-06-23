@@ -100,25 +100,66 @@ nav a {
     margin-left: 8px;
 }
 
+
+image.block {
+    display: block;
+    position: relative;
+    width: 100%;
+    max-height: 10vh;
+    overflow: hidden;
+    background-image: url("../images/INDEX_image/Jannis & Julia preweddingshoot-11.jpg");
+    background-size: cover;
+    background-position: var(--main-bg-position, center center);
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+
+
+
 /* Main content */
 main {
-    padding: 0px 20px;
-    height: auto;
-    background-color: var(--bg-light);
+    display: block;
+    min-height: 100vh;
+    background-color: rgba(242, 235, 204, 0.85);
+    display: block;
+    min-height: 80vh; 
+    overflow: hidden;
+   
 }
 
 section {
     max-width: 700px;
     height: fit-content;
-    margin: 0 auto 40px;
+    margin: 290px auto 40px;
+    text-align: center;
+}
+
+.block {
+    display: block;
+    min-height: 40vh;
+    background-color: var(--bg-dark);
+
+}
+
+.block-1 {
+    display: block;
+    min-height: 40vh;
+    background-color: var(--bg-dark);
+    
 }
 
 section h2 {
     margin-bottom: 10px;
     font-size: 36px;
-    color: var(--bg-dark);
+    color: var(--bg-blue);
 }
 
+section h3 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: var(--bg-blue);
+}
 section p {
     margin-bottom: 16px;
     font-size: 18px;
@@ -126,7 +167,7 @@ section p {
 }
 
 /* RSVP Form */
-form {
+/* form { 
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -160,7 +201,7 @@ button:hover { opacity: 0.9; }
 
 #rsvpStatus { margin-top: 12px; font-size: 16px; }
 
-/* Reacties */
+/* Reacties 
 #messages {
     margin-top: 20px;
 }
@@ -214,7 +255,7 @@ button:hover { opacity: 0.9; }
 
 .delete-btn:hover { transform: translateY(-1px); opacity: 0.95; }
 
-/* Aanwezigheidslijst */
+/* Aanwezigheidslijst 
 .attendees-list {
     display: flex;
     flex-direction: column;
@@ -303,7 +344,7 @@ footer {
     position: relative; 
     bottom: 0px;
     width: 100%;
-}
+} */
 
 /* Responsive */
 @media (max-width: 600px) {
