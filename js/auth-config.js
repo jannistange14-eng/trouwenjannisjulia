@@ -1,5 +1,5 @@
-const ADMIN_USERNAME = "Bruidspaar";
-const ADMIN_PASSWORD = "JJ.tange2024";
+const ADMIN_USERNAME = "bruiloft";
+const ADMIN_PASSWORD = "deliefdevieren";
 
 const GUEST_ACCOUNTS = [
 	{ username: "PaMa", password: "4571PT", displayName: "papa&mama" },
