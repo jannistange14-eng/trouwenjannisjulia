@@ -13,11 +13,19 @@
 }
 
 html {
-    overflow-x: none;
+    min-height: 100%;
+    height: 100%;
+    overflow-x: hidden;
     overscroll-behavior-y: none;
 }
 
 body {
+    min-height: 100%;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
     font-family: "Playfair Display", serif;
     background-color: var(--bg-dark);
     color: #333;
@@ -29,10 +37,13 @@ body {
 
 /* Layout */
 .container {
-    max-width: fit-content;
+    width: 100%;
+    min-height: 100vh;
     margin: 0;
     padding: 0;
-    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 }
 
 /* Header & Nav */
@@ -49,7 +60,7 @@ header {
 .header-content {
     color: var(--bg-light);
     position: relative;
-    top: 80px;
+    top: 40px;
 }
 
 .header-content h1 {
@@ -113,11 +124,11 @@ nav a {
 
 .hero-block {
     position: relative;
+    width: 100%;
+    min-height: 60vh;
     max-width: 100%;
-    max-height: 180vh;
     overflow: hidden;
     display: flex;
-    object-fit: cover;
     align-items: center;
     justify-content: center;
     background-color: var(--bg-dark);
@@ -125,20 +136,19 @@ nav a {
 }
 
 .Frontpage-image {
-    position: relative;
-    display: block;
-    object-fit: cover;
+    position: absolute;
     inset: 0;
     width: 100%;
+    height: 100%;
+    overflow: hidden;
     z-index: 1;
 }
 
 .Frontpage-image img {
     width: 100%;
-    height: fit-content;
+    height: 100%;
     object-fit: cover;
     display: block;
-    
 }
 
 
@@ -147,8 +157,8 @@ nav a {
 /* Main content */
 main {
     background-color: rgba(242, 235, 204, 0.85);
-    min-height: 80vh;
-   
+    min-height: 140vh;
+    flex: 1;
 }
 
 section {
@@ -214,25 +224,30 @@ section ul li {
 
 /* Responsive */
 @media (max-width: 600px) {
+    html {
+        min-height: 100%;
+        height: 100%;
+        overflow-x: hidden;
+        overscroll-behavior-y: none;
+    }
+
+    body {
+        min-height: 100%;
+        height: 100%;
+        width: 100%;
+        font-family: "Playfair Display", serif;
+        background-color: var(--bg-dark);
+        color: #333;
+        line-height: 1.6;
+        overflow-x: hidden;
+        overscroll-behavior-y: none;
+        touch-action: manipulation;
+        object-fit: cover;
+    }
+
     header {
         padding: 40px 16px 80px;
     }
-
-    html {
-    overflow-x: none;
-    overscroll-behavior-y: none;
-}
-
-body {
-    font-family: "Playfair Display", serif;
-    background-color: var(--bg-dark);
-    color: #333;
-    line-height: 1.6;
-    overflow-x: hidden;
-    overscroll-behavior-y: none;
-    touch-action: manipulation;
-    object-fit: cover;
-}
 
 
     nav {
@@ -291,6 +306,18 @@ body {
     header {
         padding: 32px 12px 70px;
     }
+
+    body {
+    font-family: "Playfair Display", serif;
+    background-color: var(--bg-dark);
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+    overscroll-behavior-y: none;
+    touch-action: manipulation;
+    object-fit: cover;
+}
+
     nav a {
         font-size: 14px;
         padding: 6px 10px;

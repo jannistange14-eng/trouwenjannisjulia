@@ -1,4 +1,4 @@
-<?php
+<?php -->
 // =====================================================
 // private-message.php
 // Dit script ontvangt een POST met name + message en
