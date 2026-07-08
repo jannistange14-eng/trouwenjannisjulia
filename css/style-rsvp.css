@@ -223,6 +223,16 @@ section ul li {
     overscroll-behavior-y: none;
 }
 
+body {
+    font-family: "Playfair Display", serif;
+    background-color: var(--bg-dark);
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+    overscroll-behavior-y: none;
+    touch-action: manipulation;
+    object-fit: cover;
+}
 
 
     nav {

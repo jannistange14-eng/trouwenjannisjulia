@@ -20,8 +20,8 @@
 
 //Stappen om zelf te pushen 
 //Open je projectmap in de terminal:
-
-//cd "c:\Users\janni\OneDrive\Desktop\Wedding.site.CODE"   //Kijk eerst wat er veranderd is:
+cd "c:\Users\janni\OneDrive\Desktop\Wedding.site.CODE"
+//   //Kijk eerst wat er veranderd is:
 
 //git status --short --branch                                                     //dit laat je zien welke bestanden zijn aangepast en op welke branch je zit
 //Controleer eventueel de remote en branch:

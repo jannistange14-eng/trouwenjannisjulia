@@ -232,7 +232,7 @@ if (adminDeleteAllBtn) { // Als de knop op deze pagina staat:
 }
 // ===== COUNTDOWN TIMER =====
 // Pas deze datum aan naar jouw trouwdatum (YYYY-MM-DD)
-const weddingDate = new Date("2026-09-12T12:00:00").getTime(); // De exacte tijd van de bruiloft in milliseconden
+const weddingDate = new Date("2026-09-12T14:00:00").getTime(); // De exacte tijd van de bruiloft in milliseconden
 
 function updateCountdown() { // De functie die elke seconde de klok ververst
     const now = new Date().getTime(); // De huidige tijd nu
